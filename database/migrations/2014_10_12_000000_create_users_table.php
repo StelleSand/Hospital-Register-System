@@ -16,6 +16,10 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('phone');
+            $table->enum('group', array('user', 'doctor','site_admin','hospital_admin'))->default('user');
+            $table->longText('description');
+            $table->string('photo');
             $table->string('password', 60);
             $table->rememberToken();
             $table->timestamps();
