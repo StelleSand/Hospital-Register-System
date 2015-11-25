@@ -38,7 +38,8 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">Hello</div>
+                <a href="login">Login</a> <a href="register">Register</a>
             </div>
         </div>
     </body>

@@ -14,10 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('login', function () {
-    return view('login');
+Route::get('/home', function () {
+    return view('welcome');
 });
-Route::get('register', function () {
-    return view('register');
-});
+Route::get('login', 'Auth\AuthController@getLogin');
+Route::post('login', 'Auth\AuthController@postLogin');
+Route::get('register', 'Auth\AuthController@getRegister');
+Route::post('register', 'Auth\AuthController@postRegister');
