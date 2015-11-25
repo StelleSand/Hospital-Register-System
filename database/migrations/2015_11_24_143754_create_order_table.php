@@ -23,7 +23,7 @@ class CreateOrderTable extends Migration
             $table->dateTime('pay_date');
             $table->enum('state',array('ordered','order_canceled','payed','payment_canceled','triage_checked','doctor_checked','completed'))->default('ordered');
             $table->double('price');
-            $table->double('refund');//退款
+            $table->double('refund')->default(0);//退款
             $table->dateTime('appoint_date');
         });
     }
