@@ -1,11 +1,10 @@
 @extends('master')
 @section('title','首页')
 @section('style')
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+<style>
 body{
             height: 100%;;
-        }
-        .header{
-            text-align: center;
         }
         .header h1{
             font-family: 华文新魏;
@@ -20,30 +19,24 @@ body{
             border: solid 1px #245269;
             float: right;
             width: 200px;
-            height: 100%;
         }
         .login-main{
-            padding-left: 15px;
-        }
+                    padding-left: 15px;
+                }
         .header-topic{
             background-color: #dddddd;
             height: 30px;
             text-align: center;
             line-height: 30px;
         }
-        #page-wrap{
-            margin: 20px auto;
-            padding: 3em;
-            background: #fff;
-            width: 1200px;
-        }
+
         .btn-success{
             margin-left: 5px;
         }
         .hospital-content{
             width: 900px;
         }
-@stop
+        </style>
 @section('nav')
 <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -70,7 +63,8 @@ body{
         </nav>
 @stop
 @section('onside')
-<div class="header-topic">用户登录</div>
+<div class="login_mini">
+        <div class="header-topic">用户登录</div>
         <div class="login-main">
             <label>账号</label>
             <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
@@ -83,8 +77,10 @@ body{
             <button type="button" class="btn btn-warning">忘记密码？</button>
         </div>
         <hr/>
+        </div>
 @stop
 @section('content')
+<div class="hospital-content">
 <div class="header-topic">
             医院列表
         </div>
