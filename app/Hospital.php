@@ -23,4 +23,8 @@ class Hospital extends Model{
         return Hospital::where('district', $district);
     }
 
+    public function offices()
+    {
+        return $this->hasMany('App\Office');
+    }
 }

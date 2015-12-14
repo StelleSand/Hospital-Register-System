@@ -9,7 +9,8 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-
+use App\Doctor;
+use App\HospitalAdmin;
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
@@ -36,4 +37,21 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function doctor(){
+        if($this->group != 'doctor')
+            return null;
+        else return $this->hasOne('App\Doctor');
+    }
+    public function hospitalAdmin(){
+        if($this->group != 'hospital_admin')
+            return null;
+        else return $this->hasOne('App\HospitalAdmin');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
+
 }

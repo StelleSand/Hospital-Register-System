@@ -15,7 +15,13 @@ Route::get('/', function(){
     return view('site_admin/site_admin');
 });
 Route::get('/home','HospitalController@getAllHospital');
+
+
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
+
+Route::get('workSpace', ['middleware' => 'auth', 'uses' =>'UserController@getWorkSpace']);
+Route::get('person', ['middleware' => 'auth', 'uses' =>'UserController@getPerson']);
+Route::post('addHospital', ['middleware' => 'auth', 'uses' =>'UserController@postAddHospital']);
