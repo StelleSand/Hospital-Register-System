@@ -7,54 +7,42 @@
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="./js/bootstrap.min.js"></script>
     <title>Register</title>
-    <style>
-        .main-content{
-            padding-top: 100px;
-            width: 980px;
-            padding-left: 400px;
-        }
-        .register-content{
-            text-align: center;
-            padding-bottom: 20px;
-            font-size: large;
-        }
-        #button1{
-            width: 180px;
-            margin-left: 190px;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
-        {{--<div class="main-content">--}}
-            <div class="register-content">
-                用户注册
-            </div>
-            <form action="register" method="post">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="form-group">
-                <label for="exampleInputPassword1">邮箱：</label>
-                <input required type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="请输入邮箱地址">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">用户名：</label>
-                <input required type="text" name="name" class="form-control" id="exampleInputPassword1" placeholder="请输入用户名">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">密码：</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码">
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <button class="btn btn-default" id="button1" type="submit">完成</button>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="text-center">
+                    <h2>用户注册</h2>
                 </div>
-                <div class="col-md-6">
-                    <a class="btn btn-default" href="login">登录</a>
-                </div>
+                <form action="register" method="post">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">邮箱：</label>
+                        <input required type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="请输入邮箱地址">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">用户名：</label>
+                        <input required type="text" name="name" class="form-control" id="exampleInputPassword1" placeholder="请输入用户名">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">密码：</label>
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码">
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-6 text-center">
+                            <button class="btn btn-default" id="buttons" type="submit">完成</button>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <a class="btn btn-default" id="buttons" href="login">登录</a>
+                        </div>
+                    </div>
+                </form>
+            <div class="col-md-3"></div>
             </div>
-            </form>
-        {{--</div>--}}
+        </div>
     </div>
 </body>
 </html>

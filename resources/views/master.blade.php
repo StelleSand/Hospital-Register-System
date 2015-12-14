@@ -8,9 +8,12 @@
     <script type="text/javascript" src="./js/bootstrap.min.js"></script>
     <title>挂号服务-@yield('title')</title>
     <style>
-            .header{
-                text-align: center;
-            }
+        .header h1{
+            font-family: 华文新魏;
+        }
+        .header{
+            text-align: center;
+        }
     </style>
     @yield('style')
     @yield('script')
@@ -45,8 +48,8 @@
                             </ul>
                             @if(!isset($user))
                                 <ul class='nav navbar-nav navbar-right'>
-                                    <li><a href='#'>登录</a></li>
-                                    <li><a href='#'>注册</a></li>
+                                    <li><a href='login'>登录</a></li>
+                                    <li><a href='register'>注册</a></li>
                                 </ul>
                             @elseif($user->group=="user")
                                 <ul class='nav navbar-nav navbar-right'>
