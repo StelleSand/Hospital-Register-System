@@ -16,4 +16,5 @@ class Doctor extends Model {
 
     protected $fillable = ['user_id','office_id','level','price','am_appoints_number','pm_appoints_number'];
 
+    protected $timestamps = false;
 }

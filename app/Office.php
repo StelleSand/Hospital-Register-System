@@ -15,4 +15,5 @@ class Office extends Model{
 
     protected $fillable = ['name','description','hospital_id','default_am_appoints_number','default_pm_appoints_number','default_appoint_price'];
 
+    protected $timestamps = false;
 }

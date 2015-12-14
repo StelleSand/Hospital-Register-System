@@ -16,4 +16,5 @@ class Hospital extends Model{
 
     protected $fillable = ['name','description','location','phone'];
 
+    protected $timestamps = false;
 }
