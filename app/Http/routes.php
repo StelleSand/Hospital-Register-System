@@ -11,16 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home', function () {
-    return view('welcome');
-});
+Route::get('/', 'HospitalController@getAllHospital');
+Route::get('/home','HospitalController@getAllHospital');
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
-Route::get('index',function(){
-    return view('index');
-});

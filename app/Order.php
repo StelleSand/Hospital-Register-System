@@ -16,6 +16,6 @@ class Order extends Model {
 
     protected $fillable = ['user_id','doctor_id','order_date','pay_date','state','price','refund','appoint_date'];
 
-    protected $timestamps = false;
+    public $timestamps = false;
 
 }

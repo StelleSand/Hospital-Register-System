@@ -15,5 +15,5 @@ class HospitalAdmin extends Model{
 
     protected $fillable = ['hospital_id','type','user_id'];
 
-    protected $timestamps = false;
+    public $timestamps = false;
 }

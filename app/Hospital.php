@@ -14,7 +14,13 @@ class Hospital extends Model{
 
     protected $table = 'hospital';
 
-    protected $fillable = ['name','description','location','phone'];
+    protected $fillable = ['name','description','location','phone','district','photo'];
 
-    protected $timestamps = false;
+    public $timestamps = false;
+
+    public function getHospitalsByDistrict($district)
+    {
+        return Hospital::where('district', $district);
+    }
+
 }
