@@ -12,39 +12,22 @@
         #bs-example-navbar-collapse-1 li{
             padding-right: 50px;
         }
-        .form-control{
-            width: 150px;
-        }
-        .login_mini{
-            border: solid 1px #245269;
-            float: right;
-            width: 200px;
-        }
-        .login-main{
-                    padding-left: 15px;
-                }
         .header-topic{
             background-color: #dddddd;
             height: 30px;
             text-align: center;
             line-height: 30px;
         }
-
-        .btn-success{
-            margin-left: 5px;
-        }
-        .hospital-content{
-            width: 900px;
-        }
 </style>
 @stop
 @section('script')
 <script>
 $(function(){
-var $chosen_li=$(".nav-pills li");
-$chosen_li.click(function(){
-for(var $i=0;$i<$chosen_li.length;$i++){
-$chosen_li[$i].removeClass("active");
+var chosen_li=$(".nav-pills li");
+console.log(chosen_li);
+chosen_li.click(function(){
+for(var i=0;i<chosen_li.length;i++){
+$(chosen_li[i]).removeClass("active");
 }
 $(this).addClass("active");
 })
@@ -75,23 +58,6 @@ $(this).addClass("active");
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-@stop
-@section('onside')
-<div class="login_mini">
-        <div class="header-topic">用户登录</div>
-        <div class="login-main">
-            <label>账号</label>
-            <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
-            <span id="helpBlock" class="help-block">请输入用户名或手机号</span>
-            <br/>
-            <label>密码</label>
-            <input type="password" class="form-control">
-            <br/>
-            <button type="submit" class="btn btn-success">登录</button>
-            <button type="button" class="btn btn-warning">忘记密码？</button>
-        </div>
-        <hr/>
-        </div>
 @stop
 @section('content')
 <div class="hospital-content">

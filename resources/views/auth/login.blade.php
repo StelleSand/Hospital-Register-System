@@ -9,10 +9,10 @@
     <title>Login</title>
     <style>
         .main-content{
-            padding-top: 150px;
-            width: 980px;
-            padding-left: 400px;
-        }
+                   padding-top: 150px;
+                   width: 980px;
+                   padding-left: 400px;
+               }
         .login-content {
             text-align: center;
             padding-bottom: 20px;
