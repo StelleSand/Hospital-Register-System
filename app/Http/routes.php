@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'HospitalController@getAllHospital');
+Route::get('/', function(){
+    return view('site_admin/site_admin');
+});
 Route::get('/home','HospitalController@getAllHospital');
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');

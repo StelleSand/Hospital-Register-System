@@ -35,7 +35,11 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
                 <label for="exampleInputPassword1">邮箱：</label>
-                <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="请输入邮箱地址">
+                <input required type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="请输入邮箱地址">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">用户名：</label>
+                <input required type="text" name="name" class="form-control" id="exampleInputPassword1" placeholder="请输入用户名">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">密码：</label>
