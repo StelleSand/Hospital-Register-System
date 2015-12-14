@@ -7,8 +7,8 @@
  */
 
 namespace App\Http\Controllers;
-
-
+use Auth;
+use Request;
 class UserController extends Controller {
 
     protected $user;
@@ -43,6 +43,8 @@ class UserController extends Controller {
         if($this->user->group != 'site_admin')
             abort(403, 'Unauthorized action.');
         $info = $request::all();
+        dump($info);
+        return;
     }
 
 }
