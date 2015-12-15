@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\Hospital;
 use App\Doctor;
+use App\Office;
 use App\User;
 use Auth;
 class HospitalController extends Controller {
