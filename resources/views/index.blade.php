@@ -73,14 +73,14 @@
     </div>
     <div class="hos_list">
         <div class="row">
-            @foreach($users as $user)
+            @foreach($hospitals as $hospital)
                 <div class="col-sm-3 col-md-3 hos">
                     <div class="thumbnail">
-                        <img src="{{$user->photo}}" alt="...">
+                        <img src="{{$hospital->photo}}" alt="...">
                         <div class="caption">
-                        <div class="hos_district">{{$user->district}}</div>
-                            <h4 class="hos_name">{{$user->name}}</h4>
-                            <p style="height: 4em;font-size: 10px" class="hos_description">{{$user->description}}</p>
+                        <div class="hos_district">{{$hospital->district}}</div>
+                            <h4 class="hos_name">{{$hospital->name}}</h4>
+                            <p style="height: 4em;font-size: 10px" class="hos_description">{{$hospital->description}}</p>
                             <p><a href="#" class="btn btn-primary" role="button">进入医院挂号</a></p>
                         </div>
                     </div>
