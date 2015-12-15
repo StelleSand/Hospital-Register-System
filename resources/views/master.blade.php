@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.css">
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/header.js"></script>
     <title>挂号服务-@yield('title')</title>
     <style>
         .header h1{
@@ -85,5 +86,33 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="messageModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">提示信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div id="message-content" class="col-md-6">
+                                {{--这是要放的消息主体--}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">知道了</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    $(function(){
+        var messages = <?php if(isset($messages)) echo json_encode($messages) ; else echo  'null'; ?>;
+        showBackEndMessages(messages);
+    })
+</script>
 </body>
 </html>

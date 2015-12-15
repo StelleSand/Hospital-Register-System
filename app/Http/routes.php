@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function(){
-    return view('site_admin/site_admin');
-});
+Route::get('/','HospitalController@getAllHospital');
 Route::get('/home','HospitalController@getAllHospital');
 
 Route::get('/addHos',function(){

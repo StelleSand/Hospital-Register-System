@@ -76,7 +76,11 @@
             @foreach($hospitals as $hospital)
                 <div class="col-sm-3 col-md-3 hos">
                     <div class="thumbnail">
+<<<<<<< HEAD
                         <img src="{{$hospital->photo}}">
+=======
+                        <img src="{{$hospital->photo}}" alt="...">
+>>>>>>> origin/master
                         <div class="caption">
                         <div class="hos_district">{{$hospital->district}}</div>
                             <h4 class="hos_name">{{$hospital->name}}</h4>
