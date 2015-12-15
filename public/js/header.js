@@ -8,11 +8,14 @@ $(function(){
         showAjaxError(event['type'],request['status'],request['statusText'],request['responseText']);
     });
 });
+/*
+//自定义添加一个按钮
 function getFormBtn(btnText,btnColor,btnBlock,btnSize,targetFormName,btnClickFunc,dataProcessFunc)
 {
     var btn = $('<button></button>').append(btnText).addClass('btn').addClass(btnColor).addClass(btnBlock).addClass(btnSize).attr('data-form',targetFormName).attr('data-recall',dataProcessFunc).on('click',btnClickFunc);
     return btn;
 }
+//通过自定义的button提交一个表单
 function postFormByFormbtn()
 {
     var formID = $(this).attr('data-form');
@@ -20,17 +23,20 @@ function postFormByFormbtn()
     var recallFunc = $(this).attr('data-recall');
     ajaxOneFormByID(formID,postAddress,recallFunc);
 }
+*/
+//用Ajax提交一个表单数据
 function ajaxOneFormByID(formID,postAddress,recallFunc)
 {
     var data = getFormData($('#' + formID));
     ajaxData(postAddress,data,recallFunc);
 }
+//获取表单所有输入数据
 function getFormData(formElement){
     var data = {};
     $(formElement).find('input').each(function() {
         var name = $(this).attr('name');
         if(name) {
-            if(name=='timebtn'){
+            /*if(name=='timebtn'){
                 data['time']='';
                 var str='#btn';
                 for(var i=1;i<=24;i++){
@@ -42,7 +48,7 @@ function getFormData(formElement){
                     }
                 }
                 data['time']+='';
-            }
+            }*/
             var val = $(this).val();
             if(!val)
                 val = $(this).attr('placeholder');
@@ -67,10 +73,12 @@ function getFormData(formElement){
     });
     return data;
 }
+//判断各种值为空的情况
 function isNull(data)
 {
     return (data == null || data == '' || data == undefined) ? true : false;
 }
+//用Ajax post方式提交表单数据
 function ajaxData(postAddress,data,recallFunc)
 {
     $.post(postAddress,data,function(result,status){
@@ -82,6 +90,7 @@ function ajaxData2(postAddress,data)
     $.post(postAddress,data,function(result,status){
     });
 }
+//展示Ajax错误
 function showAjaxError(ErrorType,status,message,responseText){
     var messages = Array();
     messages[0] = Array();
@@ -90,6 +99,7 @@ function showAjaxError(ErrorType,status,message,responseText){
     messages[0]['message'] += responseText;
     showAlertMessages(messages,null);
 }
+//展示返回的数据的错误
 function showBackEndMessages(messages)
 {
     if(isNull(messages) || messages.length < 1)
@@ -103,6 +113,7 @@ function showBackEndMessages(messages)
     }
     showAlertMessages(messagesToShow);
 }
+//用模态框展示返回信息的warning
 function showAlertMessages(messages,status){
     var messagesContent;
     for(var i = 0 ; i < messages.length ; i++)
@@ -112,6 +123,7 @@ function showAlertMessages(messages,status){
     }
     showMessage(messagesContent);
 }
+//将返回的信息放入div标签中
 function getMessageAlert(alertClass,label,message)
 {
     var alertDiv = $('<div></div>').addClass('alert').addClass(alertClass);
@@ -119,11 +131,13 @@ function getMessageAlert(alertClass,label,message)
     $(alertDiv).append(message);
     return alertDiv
 }
+//用模态框展示信息
 function showMessage(messageContent){
     $('#message-content').empty();
     $('#message-content').append(messageContent);
     $('#messageModel').modal('show');
 }
+
 function getFormGroup(labelText,inputName,inputType,inputPlaceholder,inputSize)
 {
     var formgroup = $('<div></div>').addClass('form-group');
@@ -140,7 +154,7 @@ function getFormGroup(labelText,inputName,inputType,inputPlaceholder,inputSize)
         var input = $('<textarea></textarea>',{
             name:inputName,
             placeholder:inputPlaceholder,
-            rows:8,
+            rows:8
         }).addClass('unresize').addClass('form-control');
     }
     $(formgroup).append(label).append(input);

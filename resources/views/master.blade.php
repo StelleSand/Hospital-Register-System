@@ -86,7 +86,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="messageModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;">
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false" style="display: block;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -96,9 +96,11 @@
                 <div class="modal-body">
                     <div class="container">
                         <div class="row">
+                            <div class="col-md-3"></div>
                             <div id="message-content" class="col-md-6">
                                 {{--这是要放的消息主体--}}
                             </div>
+                            <div class="col-md-3"></div>
                         </div>
                     </div>
                 </div>
