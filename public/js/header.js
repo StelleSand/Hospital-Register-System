@@ -137,8 +137,8 @@ function showMessage(messageContent){
     $('#message-content').append(messageContent);
     $('#messageModel').modal('show');
 }
-
-function getFormGroup(labelText,inputName,inputType,inputPlaceholder,inputSize)
+//添加一个form-group
+function getFormGroup(labelText,inputName,inputType,inputPlaceholder)
 {
     var formgroup = $('<div></div>').addClass('form-group');
     var label = $('<label></label>').append(labelText);
@@ -147,7 +147,7 @@ function getFormGroup(labelText,inputName,inputType,inputPlaceholder,inputSize)
             type: inputType,
             name: inputName,
             placeholder: inputPlaceholder
-        }).addClass(inputSize).addClass('form-control');
+        })..addClass('form-control');
     }
     else
     {

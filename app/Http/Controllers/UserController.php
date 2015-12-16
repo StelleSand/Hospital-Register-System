@@ -33,7 +33,7 @@ class UserController extends Controller {
             case 'doctor':
                 return view('',$this->data);
             case 'hospital_admin':
-                return view('',$this->data);
+                return view('hospital_admin/hospital_admin',$this->data);
         }
     }
 
