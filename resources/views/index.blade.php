@@ -60,16 +60,16 @@
 <div class="hospital-content">
     <div class="header-topic">
             医院列表
-        </div>
-        <div>
-            <ul class="nav nav-pills">
-                <li role="presentation" class="active"><a href="#">北京市</a></li>
-                <li role="presentation"><a href="#">朝阳区</a></li>
-                <li role="presentation"><a href="#">海淀区</a></li>
-                <li role="presentation"><a href="#">丰台区</a></li>
-                <li role="presentation"><a href="#">昌平区</a></li>
-                <li role="presentation"><a href="#">大兴区</a></li>
-            </ul>
+    </div>
+    <div>
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="#">北京市</a></li>
+            <li role="presentation"><a href="#">朝阳区</a></li>
+            <li role="presentation"><a href="#">海淀区</a></li>
+            <li role="presentation"><a href="#">丰台区</a></li>
+            <li role="presentation"><a href="#">昌平区</a></li>
+            <li role="presentation"><a href="#">大兴区</a></li>
+        </ul>
     </div>
     <div class="hos_list">
         <div class="row">
@@ -81,7 +81,7 @@
                         <div class="hos_district">{{$hospital->district}}</div>
                             <h4 class="hos_name">{{$hospital->name}}</h4>
                             <p style="height: 4em;font-size: 10px" class="hos_description">{{$hospital->description}}</p>
-                            <p><a href="#" class="btn btn-primary" role="button">进入医院挂号</a></p>
+                            <p><a href="#?id={{$hospital->id}}" class="btn btn-primary" role="button">进入医院挂号</a></p>
                         </div>
                     </div>
                 </div>

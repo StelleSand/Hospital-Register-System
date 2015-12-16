@@ -33,6 +33,8 @@ function ajaxOneFormByID(formID,postAddress,recallFunc)
 //获取表单所有输入数据
 function getFormData(formElement){
     var data = {};
+    if($(formElement).attr('data-id')!=undefined)
+        data[id]=$(formElement).attr('data-id');
     $(formElement).find('input').each(function() {
         var name = $(this).attr('name');
         if(name) {
@@ -132,11 +134,23 @@ function getMessageAlert(alertClass,label,message)
     return alertDiv
 }
 //用模态框展示信息
+function showForm(messageContent){
+    $('#form-content').empty();
+    $('#form-content').append(messageContent);
+    $('#addFormModal').modal('show');
+}
 function showMessage(messageContent){
     $('#message-content').empty();
     $('#message-content').append(messageContent);
-    $('#messageModel').modal('show');
+    $('#messageModal').modal('show');
 }
+//用collapse展示信息
+function showCollapse(messageColl){
+    $("#coll_doctor").children("#doc_show_list").empty();
+    $("#coll_doctor").children("#doc_show_list").append(messageColl);
+    $("#coll_doctor").collapse('toggle');
+}
+
 //添加一个form-group
 function getFormGroup(labelText,inputName,inputType,inputPlaceholder)
 {
@@ -147,7 +161,7 @@ function getFormGroup(labelText,inputName,inputType,inputPlaceholder)
             type: inputType,
             name: inputName,
             placeholder: inputPlaceholder
-        })..addClass('form-control');
+        }).addClass('form-control');
     }
     else
     {
@@ -156,6 +170,28 @@ function getFormGroup(labelText,inputName,inputType,inputPlaceholder)
             placeholder:inputPlaceholder,
             rows:8
         }).addClass('unresize').addClass('form-control');
+    }
+    $(formgroup).append(label).append(input);
+    return formgroup;
+}
+//返回一个带有默认值的表单
+function getFormGroupWithValue(labelText,inputName,inputType,inputValue)
+{
+    var formgroup = $('<div></div>').addClass('form-group');
+    var label = $('<label></label>').append(labelText);
+    if(inputType != 'textarea') {
+        var input = $('<input>', {
+            type: inputType,
+            name: inputName,
+            value: inputValue
+        }).addClass('form-control');
+    }
+    else
+    {
+        var input = $('<textarea></textarea>',{
+            name:inputName,
+            rows:8
+        }).addClass('unresize').addClass('form-control').text(inputValue);
     }
     $(formgroup).append(label).append(input);
     return formgroup;

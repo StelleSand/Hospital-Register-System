@@ -14,6 +14,12 @@
 Route::get('/','HospitalController@getAllHospital');
 Route::get('/home','HospitalController@getAllHospital');
 
+Route::get('/addDoc',function(){
+    return view('hospital_admin/addDoctor');
+});
+Route::get('/hospital',function(){
+    return view('hospital/hospital');
+});
 
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('auth/login', 'Auth\AuthController@getLogin');

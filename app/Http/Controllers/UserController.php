@@ -22,7 +22,7 @@ class UserController extends Controller {
     public function __construct()
     {
         $this->user = Auth::user();
-        $this->date['user'] = $this->user;
+        $this->data['user'] = $this->user;
     }
 
     public function getWorkSpace()
@@ -34,13 +34,10 @@ class UserController extends Controller {
             case 'doctor':
                 return view('',$this->data);
             case 'hospital_admin':
-<<<<<<< HEAD
-=======
                 $hospitalAdmin = $this->user->hospitalAdmin()->first();
                 $hospital = $hospitalAdmin->hospital()->first();
                 $offices = $hospital->offices()->get();
                 $this->data['offices'] = $offices;
->>>>>>> origin/master
                 return view('hospital_admin/hospital_admin',$this->data);
         }
     }

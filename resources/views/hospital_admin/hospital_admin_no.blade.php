@@ -122,4 +122,26 @@
         </div>
         <div class="col-md-2"></div>
     </div>
+
+
+
+
+
+
+
+
+     @foreach($doctors as $doctor)
+        <div class="col-md-4 one_doctor">
+            <div class="panel panel-success">
+                <div class="panel-heading doc_name" data-id="{{$doctor->id}}">医生姓名：<span>{{$doctor->name}}</span></div>
+                <div class="panel-body doc_email">医生邮箱：<span>{{$doctor->email}}</span></div>
+                <div class="panel-body doc_level">医生级别：<span>{{$doctor->level}}</span></div>
+                <div class="panel-body doc_price">挂号费用：<span>{{$doctor->price}}</span></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center"><button class="btn btn-primary" onclick="edit_doc(this)">编辑该医生</button></div>
+            </div>
+            <br/>
+        </div>
+     @endforeach
 @stop
