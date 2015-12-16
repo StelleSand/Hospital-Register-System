@@ -12,6 +12,7 @@ use App\HospitalAdmin;
 use App\User;
 use Auth;
 use Request;
+use App\Office;
 class UserController extends Controller {
 
     protected $user;
@@ -33,6 +34,13 @@ class UserController extends Controller {
             case 'doctor':
                 return view('',$this->data);
             case 'hospital_admin':
+<<<<<<< HEAD
+=======
+                $hospitalAdmin = $this->user->hospitalAdmin()->first();
+                $hospital = $hospitalAdmin->hospital()->first();
+                $offices = $hospital->offices()->get();
+                $this->data['offices'] = $offices;
+>>>>>>> origin/master
                 return view('hospital_admin/hospital_admin',$this->data);
         }
     }

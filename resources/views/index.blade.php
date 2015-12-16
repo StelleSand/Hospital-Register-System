@@ -76,7 +76,7 @@
             @foreach($hospitals as $hospital)
                 <div class="col-sm-3 col-md-3 hos">
                     <div class="thumbnail">
-                        <img src="{{$hospital->photo}}">
+                        {{--<img src="{{$hospital->photo}}">--}}
                         <div class="caption">
                         <div class="hos_district">{{$hospital->district}}</div>
                             <h4 class="hos_name">{{$hospital->name}}</h4>
@@ -86,74 +86,6 @@
                     </div>
                 </div>
             @endforeach
-
-
-                <div class="col-sm-3 col-md-3 hos">
-                    <div class="thumbnail">
-                        <img src="..." alt="...">
-                        <div class="caption">
-                        <div class="hos_district">大兴区</div>
-                            <h4 class="hos_name">11个字以上加...北航校医院北航校医院北航校医院北航校医院</h4>
-                            <p style='height: 4em;font-size: 10px' class="hos_description">56字以上加...北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院</p>
-                            <p class="text-center"><a href="#" class="btn btn-primary" role="button">进入医院挂号</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-md-3 hos">
-                    <div class="thumbnail">
-                        <img src="..." alt="...">
-                        <div class="caption">
-                            <div class="hos_district">昌平区</div>
-                            <h4 class="hos_name">北航校医院北航校医院北北航校医院北航校医院...</h4>
-                            <p style='height: 4em;font-size: 10px' class="hos_description">北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北航校医院北北航校医院北航校医院...</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-md-3 hos">
-                    <div class="thumbnail">
-                        <img src="..." alt="...">
-                        <div class="caption">
-                        <div class="hos_district">海淀区</div>
-                            <h4 class="hos_name">11个字以上加...</h4>
-                            <p style="height: 4em;font-size: 10px" class="hos_description">...</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-md-3 hos">
-                    <div class="thumbnail">
-                        <img src="..." alt="...">
-                        <div class="caption">
-                        <div class="hos_district">丰台区</div>
-                            <h4 class="hos_name">Thumbnail label</h4>
-                            <p style="height: 4em;font-size: 10px" class="hos_description">...</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-md-3 hos">
-                    <div class="thumbnail">
-                        <img src="..." alt="...">
-                        <div class="caption">
-                        <div class="hos_district">朝阳区</div>
-                            <h4 class="hos_name">Thumbnail label</h4>
-                            <p style="height: 4em;font-size: 10px" class="hos_description">...</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-md-3 hos">
-                    <div class="thumbnail">
-                        <img src="..." alt="...">
-                        <div class="caption">
-                        <div class="hos_district">朝阳区</div>
-                            <h4 class="hos_name">Thumbnail label</h4>
-                            <p style="height: 4em;font-size: 10px" class="hos_description">...</p>
-                            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                        </div>
-                    </div>
-                </div>
         </div>
     </div>
 </div>

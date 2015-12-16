@@ -86,7 +86,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+=======
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+>>>>>>> origin/master
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -112,6 +116,7 @@
     </div>
 <script>
     $(function(){
+        $('#messageModel').modal('hide');
         var messages = <?php if(isset($messages)) echo json_encode($messages) ; else echo  'null'; ?>;
         showBackEndMessages(messages);
     })

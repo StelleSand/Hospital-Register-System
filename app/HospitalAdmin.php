@@ -16,4 +16,9 @@ class HospitalAdmin extends Model{
     protected $fillable = ['hospital_id','type','user_id'];
 
     public $timestamps = false;
+
+    public function hospital()
+    {
+        return $this->belongsTo('App\Hospital');
+    }
 }
