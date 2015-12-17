@@ -84,7 +84,7 @@ function isNull(data)
 function ajaxData(postAddress,data,recallFunc)
 {
     $.post(postAddress,data,function(result,status){
-       eval(recallFunc)(result,status);
+        eval(recallFunc)(result,status);
     });
 }
 function ajaxData2(postAddress,data)
