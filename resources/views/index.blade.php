@@ -81,7 +81,7 @@
                         <div class="hos_district">{{$hospital->district}}</div>
                             <h4 class="hos_name">{{$hospital->name}}</h4>
                             <p style="height: 4em;font-size: 10px" class="hos_description">{{$hospital->description}}</p>
-                            <p><a href="#?id={{$hospital->id}}" class="btn btn-primary" role="button">进入医院挂号</a></p>
+                            <p><a href="hospital?id={{$hospital->id}}" class="btn btn-primary" role="button">进入医院挂号</a></p>
                         </div>
                     </div>
                 </div>

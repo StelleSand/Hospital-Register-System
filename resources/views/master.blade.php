@@ -2,6 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="isloggedin"
+    @if(!isset($user))
+    content="no"
+    @else
+    content={{$user->id}}
+    @endif
+    >
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.css">
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>
@@ -128,9 +135,6 @@
                 </div>
             </div>
         </div>
-    <div class="collapse" id="coll_doctor">
-        <div class="container" id="doc_show_list"></div>
-    </div>
 <script>
     $(function(){
         $('#messageModel').modal('hide');

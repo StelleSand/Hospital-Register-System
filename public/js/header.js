@@ -33,6 +33,7 @@ function ajaxOneFormByID(formID,postAddress,recallFunc)
 //获取表单所有输入数据
 function getFormData(formElement){
     var data = {};
+    //传入提交表单的id
     if($(formElement).attr('data-id')!=undefined)
         data[id]=$(formElement).attr('data-id');
     $(formElement).find('input').each(function() {
@@ -144,12 +145,7 @@ function showMessage(messageContent){
     $('#message-content').append(messageContent);
     $('#messageModal').modal('show');
 }
-//用collapse展示信息
-function showCollapse(messageColl){
-    $("#coll_doctor").children("#doc_show_list").empty();
-    $("#coll_doctor").children("#doc_show_list").append(messageColl);
-    $("#coll_doctor").collapse('toggle');
-}
+
 
 //添加一个form-group
 function getFormGroup(labelText,inputName,inputType,inputPlaceholder)

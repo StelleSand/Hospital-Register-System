@@ -13,7 +13,7 @@
             $("#addFormModal").modal('hide');
             //URL需要重新添加
             $("#addFormModal").one('hidden.bs.modal',function(event){    //hidden.bs.modal事件处理函数每次只执行一次
-                ajaxOneFormByID('add_office','/office.php',show_result());
+                ajaxOneFormByID('add_office','/office.php',show_result);
             })
         }
         function show_result(data,status){
@@ -23,7 +23,7 @@
                 showMessage(err_message);
             }
             else{
-                var result=data;
+                var result=JSON.parse(data);
                 if(result['status']=='error'){
                     var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center');
                     err_message.html(result['message']);

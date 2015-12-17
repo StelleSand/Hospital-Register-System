@@ -16,7 +16,7 @@
             $("#addFormModal").modal('hide');
             $("#addFormModal").one('hidden.bs.modal',function(e){
                 //URL需重新写
-                    ajaxOneFormByID('add_doctor','/doctor.php',show_result());
+                    ajaxOneFormByID('add_doctor','/doctor.php',show_result);
             })
         }
         function show_result(data,status){
@@ -26,7 +26,7 @@
                 showMessage(err_message);
             }
             else{
-                var result=data;
+                var result=JSON.parse(data);
                 if(result['status']=='error'){
                     var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center');
                     err_message.html(result['message']);
@@ -78,7 +78,7 @@
         <div class="col-md-4 one_doctor">
             <div class="panel panel-success">
                 <div class="panel-heading doc_name" data-id="{{$doctor->id}}">医生姓名：<span>{{$doctor->name}}</span></div>
-                <div class="panel-body doc_email">医生邮箱：<span>{{$doctor->email}}</span></div>
+                <div class="panel-body doc_email">医生邮箱：<span>{{$doctor->user->email}}</span></div>
                 <div class="panel-body doc_level">医生级别：<span>{{$doctor->level}}</span></div>
                 <div class="panel-body doc_price">挂号费用：<span>{{$doctor->price}}</span></div>
             </div>

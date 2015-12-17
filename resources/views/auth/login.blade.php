@@ -40,7 +40,6 @@
                             <a class="btn btn-default" id="buttons" href="register">注册</a>
                         </div>
                     </div>
-
                 </form>
             </div>
             <div class="col-md-3"></div>
