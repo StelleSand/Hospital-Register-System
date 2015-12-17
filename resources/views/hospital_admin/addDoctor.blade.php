@@ -1,10 +1,12 @@
 @extends("master")
 @section("title","科室管理")
 @section("script")
+    <meta name="office" content={{$office->id}}>
     <script>
         function add_doctor(){
             $("#addFormModal").find(".modal-title").html("添加医生");
-            var add_doc_form=$('<form></form>').addClass("doc_form").attr("id","add_doctor");
+            var office_id=$("meta[name='office']").attr('content');
+            var add_doc_form=$('<form></form>').addClass("doc_form").attr("id","add_doctor").attr('data-id',office_id);
             add_doc_form.append(getFormGroup('医生姓名','name','text','请输入医生姓名'));
             add_doc_form.append(getFormGroup('邮箱','email','email','请输入医生的邮箱'));
             add_doc_form.append(getFormGroup('密码','password','password','请输入密码'));
@@ -16,11 +18,7 @@
             $("#addFormModal").modal('hide');
             $("#addFormModal").one('hidden.bs.modal',function(e){
                 //URL需重新写
-<<<<<<< HEAD
-                    ajaxOneFormByID('add_doctor','/doctor.php',show_result);
-=======
-                    ajaxOneFormByID('add_doctor','addDoctor',show_result);
->>>>>>> origin/master
+                ajaxOneFormByID('add_doctor','addDoctor',show_result);
             })
         }
         function show_result(data,status){
@@ -30,11 +28,7 @@
                 showMessage(err_message);
             }
             else{
-<<<<<<< HEAD
                 var result=JSON.parse(data);
-=======
-                var result=JSON.parse(data;)
->>>>>>> origin/master
                 if(result['status']=='error'){
                     var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center');
                     err_message.html(result['message']);
