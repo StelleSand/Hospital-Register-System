@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+<<<<<<< HEAD
     <meta name="isloggedin"
     @if(!isset($user))
     content="no"
@@ -9,6 +10,9 @@
     content={{$user->id}}
     @endif
     >
+=======
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+>>>>>>> origin/master
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="./css/bootstrap-theme.css">
     <script type="text/javascript" src="./js/jquery-2.1.1.min.js"></script>

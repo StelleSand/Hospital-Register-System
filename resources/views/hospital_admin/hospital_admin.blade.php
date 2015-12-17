@@ -13,7 +13,11 @@
             $("#addFormModal").modal('hide');
             //URL需要重新添加
             $("#addFormModal").one('hidden.bs.modal',function(event){    //hidden.bs.modal事件处理函数每次只执行一次
+<<<<<<< HEAD
                 ajaxOneFormByID('add_office','/office.php',show_result);
+=======
+                ajaxOneFormByID('add_office','/addOffice',show_result);
+>>>>>>> origin/master
             })
         }
         function show_result(data,status){
@@ -23,7 +27,11 @@
                 showMessage(err_message);
             }
             else{
+<<<<<<< HEAD
                 var result=JSON.parse(data);
+=======
+                var result = JSON.parse(data);
+>>>>>>> origin/master
                 if(result['status']=='error'){
                     var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center');
                     err_message.html(result['message']);
@@ -77,61 +85,6 @@
                 <br/>
             </div>
         @endforeach
-        <div class="col-md-4 one_office">
-            <div class="panel panel-success">
-                <div class="panel-heading office_name" data-id="1">科室名称：<span>妇科</span></div>
-                <div style="height:4em" class="panel-body office_description" data-info="专治疑难杂症">科室描述：<span>专治疑难杂症</span></div>
-            </div>
-            <div class="row">
-            <div class="col-md-6 text-center"><button class="btn btn-primary" onclick="edit_off(this)">编辑该科室</button></div>
-            <div class="col-md-6 text-center"><a href="#" class="btn btn-primary">添加医生</a></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-success">
-                <div class="panel-heading">科室名称：妇科</div>
-                <div style="height:4em" class="panel-body">科室描述：专治疑难杂症</div>
-            </div>
-            <div class="row">
-            <div class="col-md-6 text-center"><button class="btn btn-primary">编辑该科室</button></div>
-            <div class="col-md-6 text-center"><a href="#" class="btn btn-primary">添加医生</a></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-success">
-                <div class="panel-heading">科室名称：妇科</div>
-                <div style="height:4em" class="panel-body">科室描述：专治疑难杂症</div>
-            </div>
-            <div class="row">
-            <div class="col-md-6 text-center"><button class="btn btn-primary">编辑该科室</button></div>
-            <div class="col-md-6 text-center"><a href="#" class="btn btn-primary">添加医生</a></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-success">
-                <div class="panel-heading">科室名称：妇科</div>
-                <div style="height:4em" class="panel-body">科室描述：专治疑难杂症</div>
-            </div>
-            <div class="row">
-            <div class="col-md-6 text-center"><button class="btn btn-primary">编辑该科室</button></div>
-            <div class="col-md-6 text-center"><a href="#" class="btn btn-primary">添加医生</a></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-success">
-                <div class="panel-heading">科室名称：妇科</div>
-                <div style="height:4em" class="panel-body">科室描述：专治疑难杂症</div>
-            </div>
-            <div class="row">
-            <div class="col-md-6 text-center"><button class="btn btn-primary">编辑该科室</button></div>
-            <div class="col-md-6 text-center"><a href="#" class="btn btn-primary">添加医生</a></div>
-            </div>
-            <br/>
-        </div>
     </div>
     <div class="row addOff_btn">
         <div class="col-md-12 text-right">

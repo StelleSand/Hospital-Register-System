@@ -16,7 +16,11 @@
             $("#addFormModal").modal('hide');
             $("#addFormModal").one('hidden.bs.modal',function(e){
                 //URL需重新写
+<<<<<<< HEAD
                     ajaxOneFormByID('add_doctor','/doctor.php',show_result);
+=======
+                    ajaxOneFormByID('add_doctor','addDoctor',show_result);
+>>>>>>> origin/master
             })
         }
         function show_result(data,status){
@@ -26,7 +30,11 @@
                 showMessage(err_message);
             }
             else{
+<<<<<<< HEAD
                 var result=JSON.parse(data);
+=======
+                var result=JSON.parse(data;)
+>>>>>>> origin/master
                 if(result['status']=='error'){
                     var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center');
                     err_message.html(result['message']);

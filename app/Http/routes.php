@@ -30,3 +30,6 @@ Route::post('register', 'Auth\AuthController@postRegister');
 Route::get('workSpace', ['middleware' => 'auth', 'uses' =>'UserController@getWorkSpace']);
 Route::get('person', ['middleware' => 'auth', 'uses' =>'UserController@getPerson']);
 Route::post('addHospital', ['middleware' => 'auth', 'uses' =>'UserController@postAddHospital']);
+Route::post('addOffice', ['middleware' => 'auth', 'uses' =>'UserController@ajaxAddOffice']);
+Route::get('addDoctor', ['middleware' => 'auth', 'uses' =>'UserController@getAddDoctor']);
+Route::post('addDoctor', ['middleware' => 'auth', 'uses' =>'UserController@ajaxAddDoctor']);
