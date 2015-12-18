@@ -9,7 +9,7 @@
     <script type="text/javascript" src="./js/make_appoint.js"></script>
     <script>
         $(function(){
-            var data = <?php if(isset($offices)) echo json_encode($offices) ; else echo  'null'; ?>;
+            data = <?php if(isset($offices)) echo json_encode($offices) ; else echo  'null'; ?>;
             $('.form_date').datetimepicker({
                 language:  'zh-CN',
                 weekStart: 1,
@@ -83,7 +83,6 @@
                 <div class="panel-body label-success" style="height: 5em">介绍：<span>就是很厉害就是很厉害就是很厉害就是很厉害就是很厉害就是很...</span></div>
                 <div class="panel-body text-right"><button class="btn btn-primary" onclick="make_appoint(this)">挂号</button></div>
             </div>
-            <div class="row"><div class="col-md-12 text-center"><button class="btn btn-primary" onclick="edit_doc(this)">挂号</button></div></div>
             <br/>
         </div>
         <div class="col-md-3 one_doctor">
