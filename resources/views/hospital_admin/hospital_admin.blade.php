@@ -13,7 +13,7 @@
             $("#addFormModal").modal('hide');
             //URL需要重新添加
             $("#addFormModal").one('hidden.bs.modal',function(event){    //hidden.bs.modal事件处理函数每次只执行一次
-                ajaxOneFormByID('add_office','/office.php',show_result);
+                ajaxOneFormByID('add_office','addOffice',show_result);
             })
         }
         function show_result(data,status){
@@ -52,12 +52,14 @@
         }
         function edit_off(btn){
             $("#addFormModal").find(".modal-title").html("添加科室");
+            var off_id=$(btn).parents('.one_office').find('.office_name').attr('data-id');
             var off_name=$(btn).parents('.one_office').find('.office_name').children('span').text();
             var off_description=$(btn).parents('.one_office').find('.office_description').attr('data-info');
             var off_id=$(btn).parents('.one_office').find('.office_name').attr('data-id');
             var add_off_form=$('<form></form>').addClass("off_form").attr("id","add_office").attr('data-id',off_id);
             add_off_form.append(getFormGroupWithValue("科室名称","name","text",off_name));
             add_off_form.append(getFormGroupWithValue("科室描述","description","textarea",off_description));
+            add_off_form.append(getFormGroupWithValue(null,'office_id','hidden',off_id));
             showForm(add_off_form);
         }
     </script>
