@@ -25,6 +25,13 @@
         }
     </style>
     <script>
+        $(function(){
+            $("#nav_content").children('li').click(function(){
+                $(this).prevAll().removeClass('active');
+                $(this).nextAll().removeClass('active');
+                $(this).addClass('active');
+            })
+        })
         function modal_mess_click(){
             $("#messageModal").modal('hide');
         }
@@ -45,10 +52,19 @@
             <div class="col-md-12">
                 <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
+                        <div class="navbar-header">
+                              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#system_nav" aria-expanded="false">
+                                  <span class="sr-only">适配小窗口</span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                              </button>
+                              <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-plus"></span></a>
+                        </div>
                         <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+                        <div class="collapse navbar-collapse" id="system_nav">
+                            <ul class="nav navbar-nav" id="nav_content">
+                                <li><a href="/">首页 <span class="sr-only">(current)</span></a></li>
                                 <li><a href="#">挂号服务</a></li>
                                 <li><a href="#">预约管理</a> </li>
                                 <li class="dropdown">
