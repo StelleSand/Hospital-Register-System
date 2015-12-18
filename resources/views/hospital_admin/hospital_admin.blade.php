@@ -70,7 +70,7 @@
             <div class="col-md-4 one_office">
                 <div class="panel panel-success">
                     <div class="panel-heading office_name" data-id="{{$office->id}}">科室名称：<span>{{$office->name}}</span></div>
-                    <div class="panel-body office_description" style="height: 4em" data-info="{{$office->description}}">科室描述：<span>{{$office->descirption}}</span></div>
+                    <div class="panel-body office_description" style="height: 4em" data-info="{{$office->description}}">科室描述：<span>{{$office->description}}</span></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 text-center"><button class="btn btn-primary" onclick="edit_off(this)">编辑该科室</button></div>

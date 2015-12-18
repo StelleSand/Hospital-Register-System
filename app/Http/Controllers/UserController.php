@@ -124,6 +124,8 @@ class UserController extends Controller {
 
     public function ajaxAddOffice()
     {
+        if(Request::has('office_id'))
+            return $this->ajaxEditOffice();
         if($this->user->group != 'hospital_admin')
             //dump($this->user);
             abort(403, 'Unauthorized action.');
@@ -148,6 +150,19 @@ class UserController extends Controller {
             $this->ajaxData['message'] = '创建科室成功！';
             $this->ajaxData['office'] = $office->toArray();
         }
+        return json_encode($this->ajaxData);
+    }
+
+    public function ajaxEditOffice()
+    {
+        $inputs = Request::all();
+        $office = Office::find($inputs['office_id']);
+        $office->name = $inputs['name'];
+        $office->description = $inputs['description'];
+        $office->save();
+        $this->ajaxData['status'] = 'success';
+        $this->ajaxData['message'] = '修改科室信息成功！';
+        $this->ajaxData['office'] = $office->toArray();
         return json_encode($this->ajaxData);
     }
 
