@@ -174,7 +174,8 @@ function getFormGroup(labelText,inputName,inputType,inputPlaceholder)
 function getFormGroupWithValue(labelText,inputName,inputType,inputValue)
 {
     var formgroup = $('<div></div>').addClass('form-group');
-    var label = $('<label></label>').append(labelText);
+    if(!isNull(labelText))
+        var label = $('<label></label>').append(labelText);
     if(inputType != 'textarea') {
         var input = $('<input>', {
             type: inputType,
