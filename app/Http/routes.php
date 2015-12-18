@@ -15,9 +15,7 @@ Route::get('/','HospitalController@getAllHospital');
 Route::get('/home','HospitalController@getAllHospital');
 
 
-Route::get('/hospital',function(){
-    return view('hospital/hospital');
-});
+Route::get('/hospital','HospitalController@getAllOffices');
 
 Route::get('/doc_information',function(){
     return view('hospital/doctor_information');
