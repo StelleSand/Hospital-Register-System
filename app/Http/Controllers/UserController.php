@@ -196,14 +196,14 @@ class UserController extends Controller {
         if(!is_null($user))
         {
             $message = '创建用户失败！邮箱已被注册！';
-            goto end;
+            goto addDoctorEnd;
         }
         $userInfo = array('name'=>$inputs['name'],'email'=>$inputs['email'],'password'=>bcrypt($inputs['password']));
         $user = User::create($userInfo);
         if(is_null($user))
         {
             $message = '创建用户失败！未知错误！';
-            goto end;
+            goto addDoctorEnd;
         }
         $office = $this->user->hospitalAdmin->hospital->offices()->find($inputs['id']);
         $doctorInfo = array('level' => $inputs['level'],
@@ -217,7 +217,7 @@ class UserController extends Controller {
         $doctor = Doctor::create($doctorInfo);
         $doctor->user = $doctor->user()->first();
         $message = '医生创建成功！';
-        end:
+        addDoctorEnd:
         if(!isset($doctor) || is_null($doctor))
         {
             $this->ajaxData['status'] = 'error';
@@ -240,7 +240,7 @@ class UserController extends Controller {
         {
             $message = '修改医生信息失败！不存在的医生！';
             $this->ajaxData['status'] = 'error';
-            goto end;
+            goto editDoctorEnd;
         }
         $doctor->level = $inputs['level'];
         $doctor->price = $inputs['price'];
@@ -253,7 +253,7 @@ class UserController extends Controller {
         $message = '修改医生信息成功！';
         $this->ajaxData['status'] = 'success';
 
-        end:
+        editDoctorEnd:
         $this->ajaxData['message'] = $message;
         $this->ajaxData['doctor'] = $doctor->toArray();
         return json_encode($this->ajaxData);

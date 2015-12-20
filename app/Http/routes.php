@@ -11,16 +11,14 @@
 |
 */
 
+//网站主要用户操作相关路由
 Route::get('/','HospitalController@getAllHospital');
-Route::get('/home','HospitalController@getAllHospital');
+Route::get('home','HospitalController@getAllHospital');
+Route::get('hospital','HospitalController@getAllOffices');
+Route::get('doctorInformation','HospitalController@getDoctorInfo');
+Route::post('submitOrder','HospitalController@ajaxSubmitOrder');
 
-
-Route::get('/hospital','HospitalController@getAllOffices');
-
-Route::get('/doc_information',function(){
-    return view('hospital/doctor_information');
-});
-
+//用户登录注册相关路由
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
@@ -28,7 +26,7 @@ Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
 Route::get('logout', 'Auth\AuthController@getLogout');
 
-
+//管理员相关路由
 Route::get('workSpace', ['middleware' => 'auth', 'uses' =>'UserController@getWorkSpace']);
 Route::get('person', ['middleware' => 'auth', 'uses' =>'UserController@getPerson']);
 Route::post('addHospital', ['middleware' => 'auth', 'uses' =>'UserController@postAddHospital']);

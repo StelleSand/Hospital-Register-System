@@ -9,6 +9,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Order;
 
 class Doctor extends Model {
 
@@ -26,5 +27,16 @@ class Doctor extends Model {
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function appointmentsAtDate($dateString)
+    {
+        return $this->orders()->appointmentsAtDate($dateString);
+    }
+
+    public function isAppointmentsOut($dateString)
+    {
+        $appointments = $this->appointmentsAtDate($dateString)->get();
+        return count($appointments) >= $this->am_appoints_number;
     }
 }

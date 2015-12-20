@@ -18,4 +18,9 @@ class Order extends Model {
 
     public $timestamps = false;
 
+    public function appointmentsAtDate($dateString)
+    {
+        return $this->where('appoint_date',$dateString)->where('state','payed');
+    }
+
 }

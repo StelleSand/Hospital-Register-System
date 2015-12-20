@@ -80,7 +80,8 @@ function getShowDateTime(formId){    //获取表单中向用户展示的时间�
     data['id']=$(formId).attr('data-id');
     var date=$(formId).find("#cal_input1").val();
     var date_time=$(formId).find('select').val();
-    data['date']=date+" "+date_time;
+    data['date']=date;
+    data['daytime']=date_time;
     return data;
 }
 
