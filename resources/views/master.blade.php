@@ -97,12 +97,13 @@
             </div>
         </div>
 
-        @yield('extra')
+
         <div class="row">
             <div class="main_content col-md-12">
                 @yield('content')
             </div>
         </div>
+        @yield('extra')
     </div>
     <div class="modal fade" id="addFormModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog">

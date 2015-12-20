@@ -11,7 +11,7 @@
             add_doc_form.append(getFormGroup('邮箱','email','email','请输入医生的邮箱'));
             add_doc_form.append(getFormGroup('密码','password','password','请输入密码'));
             add_doc_form.append(getFormGroup('医生级别','level','text','专家/普通医生'));
-            add_doc_form.append(getFormGroup('挂号费用','price','text','请输入挂号费用'));
+            add_doc_form.append(getFormGroup('挂号费用','price','number','请输入挂号费用'));
             showForm(add_doc_form);
         }
         function modal_form_click(){
@@ -69,7 +69,7 @@
             add_doc_form.append(getFormGroupWithValue('医生姓名','name','text',doc_name));
             add_doc_form.append(getFormGroupWithValue('医生邮箱','email','email',doc_email));
             add_doc_form.append(getFormGroupWithValue('医生级别','level','text',doc_level));
-            add_doc_form.append(getFormGroupWithValue('挂号费用','price','text',doc_price));
+            add_doc_form.append(getFormGroupWithValue('挂号费用','price','number',doc_price));
             showForm(add_doc_form);
         }
     </script>

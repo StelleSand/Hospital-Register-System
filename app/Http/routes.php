@@ -15,14 +15,6 @@ Route::get('/','HospitalController@getAllHospital');
 Route::get('/home','HospitalController@getAllHospital');
 
 
-Route::get('/hospital',function(){
-    return view('hospital/hospital');
-});
-
-Route::get('/doc_information',function(){
-    return view('hospital/doctor_information');
-});
-
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
