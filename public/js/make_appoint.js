@@ -5,21 +5,32 @@ function make_appoint(btn){
     if(user_name=='no')
         window.location.href="/login";
     else{
-        var doc_name=$(btn).parent().prevAll('.doc_name').find('strong').text();
         var doc_id=$(btn).parents('.panel').children('.doc_name').attr('data-id');
+        if(doc_id==undefined)
+            doc_id=$(btn).prevAll("#doc_name").attr('data-id');
         $("#addFormModal").find(".modal-title").html("挂号预约");
-        var make_appoint_form=$('<form></form>').addClass("appoint_form").attr("id","make_appoint").attr('data-id',doc_id).attr('data-doc_name',doc_name);
+        var make_appoint_form=$('<form></form>').addClass("appoint_form").attr("id","make_appoint").attr('data-id',doc_id);
         var calendar=add_calendar();
         var select=add_select();
-        make_appoint_form.append(calendar).addClass(select);
+        make_appoint_form.append(calendar).append(select);
 
         showForm(make_appoint_form);
+        $('.form_date').datetimepicker({
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
     }
 }
 function add_calendar(){    //添加一个带有日历的form-group
     var form_group=$("<div></div>").addClass('form-group');
     var label=$("<label></label>").attr('for','cal_input2').addClass('control-label').text('选择日期');
-    var form_cal=$('<div></div>').addClass('input-group').addClass('date').addClass('form_date').attr('data-date','').attr('data-date-format','yyyy年mm月dd日').attr('data-link-field','cal_input2').attr('data-link-format','yyyy-m-d');
+    var form_cal=$('<div></div>').addClass('input-group').addClass('date').attr('id','datetimepicker').addClass('form_date').attr('data-date','').attr('data-date-format','yyyy年mm月dd日').attr('data-link-field','cal_input2').attr('data-link-format','yyyy-m-d');
     var input1=$("<input>",{
         type:"text",
         name:"show_date",

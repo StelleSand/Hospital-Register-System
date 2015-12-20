@@ -7,28 +7,13 @@
     <script type="text/javascript" src="./js/bootstrap-datetimepicker.js"></script>
     <script type="text/javascript" src="./js/bootstrap-datetimepicker.zh-CN.js"></script>
     <script type="text/javascript" src="./js/make_appoint.js"></script>
-    <script>
-        $(function(){
-            var data = <?php if(isset($offices)) echo json_encode($offices) ; else echo  'null'; ?>;
-            $('.form_date').datetimepicker({
-                language:  'zh-CN',
-                weekStart: 1,
-                todayBtn:  1,
-                autoclose: 1,
-                todayHighlight: 1,
-                startView: 2,
-                minView: 2,
-                forceParse: 0
-            });
-        })
-    </script>
 @stop
 @section("extra")
     <div class="row">
         <div class="col-md-12">
             <div class="jumbotron">
                 <div><h1>医生信息</h1></div>
-                <div class="form-group"><h2>{{$doctor->user->name}}</h2></div>
+                <div class="form-group" id="doc_name" data-id="{{$doctor->id}}"><h2>{{$doctor->user->name}}</h2></div>
                 <div class="form-group"><h3>级别：{{$doctor->level}}</h3></div>
                 <div class="form-group"><h3>挂号费用：{{$doctor->price}}</h3></div>
                 <div class="form-group"><h3>邮箱：{{$doctor->user>email}}</h3></div>

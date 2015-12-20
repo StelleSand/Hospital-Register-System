@@ -8,20 +8,8 @@
     <script type="text/javascript" src="./js/bootstrap-datetimepicker.zh-CN.js"></script>
     <script type="text/javascript" src="./js/make_appoint.js"></script>
     <script>
-        $(function(){
-            data = <?php if(isset($offices)) echo json_encode($offices) ; else echo  'null'; ?>;
-            $('.form_date').datetimepicker({
-                language:  'zh-CN',
-                weekStart: 1,
-                todayBtn:  1,
-                autoclose: 1,
-                todayHighlight: 1,
-                startView: 2,
-                minView: 2,
-                forceParse: 0
-            });
-        })
         //点击科室展示该科室内所有医生实现函数
+        /*
         function show_doctor(btn){
             $(btn).addClass('selectedBtn')
             var doc_id=$(btn).attr('data-id');
@@ -58,79 +46,42 @@
                 }
             })
         }
+        */
     </script>
 @stop
 @section("extra")
-    <div class="row">
-        <div class="list-group col-md-12">
-            @foreach($offices as $office)
-                <button type="button" class="list-group-item" data-id="{{$office->id}}" onclick="show_doctor(this)">科室名称：{{$office->name}}</button>
-            @endforeach
-            <button type="button" class="list-group-item" data-id="12" aria-expanded="true" aria-controls="example" onclick="show_doctor(this)">科室名称：妇科</button>
-            <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
-            <button type="button" class="list-group-item">Morbi leo risus</button>
-            <button type="button" class="list-group-item">Porta ac consectetur ac</button>
-            <button type="button" class="list-group-item">Vestibulum at eros</button>
-        </div>
-    </div>
-    <button type="button" data-id="12" data-toggle="collapse" data-target="#example"aria-expanded="false" aria-controls="example">科室名称：妇科</button>
-    <div class="collapse" id="example">
-        <br/>
+    <div class="container-fluid" id="office_list">
         <div class="row">
-        <div class="col-md-3 one_doctor">
-            <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="123"><a href="#"><strong>王医生</strong></a>&nbsp;&nbsp;&nbsp;&nbsp;<span>主任医师</span></div>
-                <div class="panel-body label-success" style="height: 5em">介绍：<span>就是很厉害就是很厉害就是很厉害就是很厉害就是很厉害就是很...</span></div>
-                <div class="panel-body text-right"><button class="btn btn-primary" onclick="make_appoint(this)">挂号</button></div>
+            <div class="list-group col-md-12">
+                @foreach($offices as $office)
+                    <button type="button" class="list-group-item" data-id="{{$office->id}}" data-toggle="collapse" data-target="#office{{$office->id}}">科室名称：{{$office->name}}</button>
+                    <div class="collapse" id="office{{$office->id}}">
+                        <br/>
+                        <div class="row">
+                            @foreach($office->doctors as $doctor)
+                                <div class="col-md-3 one_doctor">
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading doc_name" data-id="{{$doctor->id}}">
+                                            <div class="row">
+                                                <div class="col-md-6 text-left"><a href="doctor_information?id={{$doctor->id}}"><strong>{{$doctor->user->name}}</strong></a></div>
+                                                <div class="col-md-6 text-right">{{$doctor->level}}</div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body label-success" style="height: 5em">介绍：<span>{{$doctor->description}}</span></div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-8 text-left" style="font-size: 10px;color: #122b40">挂号费用：{{$doctor->price}}</div>
+                                                <div class="col-md-4 text-right"><button class="btn btn-primary" onclick="make_appoint(this)">挂号</button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br/>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <br/>
-        </div>
-        <div class="col-md-3 one_doctor">
-            <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="123"><strong>王医生</strong>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-right">主任医师</span></div>
-                <div class="panel-body text-right label-success">挂号费用：<span>$1000000</span></div>
-                <div class="panel-body text-right"><button class="btn btn-primary" onclick="edit_doc(this)">挂号</button></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-3 one_doctor">
-            <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="123"><strong>王医生</strong>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-right">主任医师</span></div>
-                <div class="panel-body text-right label-success">挂号费用：<span>$1000000</span></div>
-                <div class="panel-body text-right"><button class="btn btn-primary" onclick="edit_doc(this)">挂号</button></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-3 one_doctor">
-            <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="123"><strong>王医生</strong>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-right">主任医师</span></div>
-                <div class="panel-body text-right label-success">挂号费用：<span>$1000000</span></div>
-                <div class="panel-body text-right"><button class="btn btn-primary" onclick="edit_doc(this)">挂号</button></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-3 one_doctor">
-            <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="123"><strong>王医生</strong>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-right">主任医师</span></div>
-                <div class="panel-body label-danger">介绍：<span>全国著名医师，牛逼的不得了啊</span></div>
-                <div class="panel-body text-right"><button class="btn btn-primary" onclick="edit_doc(this)">挂号</button></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-3 one_doctor">
-            <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="123"><strong>王医生</strong>&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-right">主任医师</span></div>
-                <div class="panel-body text-right label-success">挂号费用：<span>$1000000</span></div>
-                <div class="panel-body text-right"><button class="btn btn-primary" onclick="edit_doc(this)">挂号</button></div>
-            </div>
-            <br/>
         </div>
     </div>
-    </div>
-    <div>我的时间佛山街的佛教搜的房间哦都市将废水金佛山</div>
-    <div>我的时间佛山街的佛教搜的房间哦都市将废水金佛山</div>
-    <div>我的时间佛山街的佛教搜的房间哦都市将废水金佛山</div>
-    <div>我的时间佛山街的佛教搜的房间哦都市将废水金佛山</div>
-    <div>我的时间佛山街的佛教搜的房间哦都市将废水金佛山</div>
-    <div>我的时间佛山街的佛教搜的房间哦都市将废水金佛山</div>
 @stop
