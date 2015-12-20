@@ -124,6 +124,8 @@ class UserController extends Controller {
 
     public function ajaxAddOffice()
     {
+        if(Request::has('office_id'))
+            return $this->ajaxEditOffice();
         if($this->user->group != 'hospital_admin')
             //dump($this->user);
             abort(403, 'Unauthorized action.');
@@ -151,6 +153,19 @@ class UserController extends Controller {
         return json_encode($this->ajaxData);
     }
 
+    public function ajaxEditOffice()
+    {
+        $inputs = Request::all();
+        $office = Office::find($inputs['office_id']);
+        $office->name = $inputs['name'];
+        $office->description = $inputs['description'];
+        $office->save();
+        $this->ajaxData['status'] = 'success';
+        $this->ajaxData['message'] = '修改科室信息成功！';
+        $this->ajaxData['office'] = $office->toArray();
+        return json_encode($this->ajaxData);
+    }
+
     public function getAddDoctor()
     {
         $officeId = Request::input('id');
@@ -164,7 +179,7 @@ class UserController extends Controller {
         $doctors = $office->doctors()->get();
         foreach($doctors as $doctor)
         {
-            $doctor->user = $doctor->user();
+            $doctor->user = $doctor->user()->first();
         }
         $this->data['doctors'] = $doctors;
         $this->data['office'] = $office;
@@ -173,6 +188,8 @@ class UserController extends Controller {
 
     public function ajaxAddDoctor()
     {
+        if(!Request::has('email'))
+            return $this->ajaxEditDoctor();
         $inputs = Request::all();
         //检查Email是否重复
         $user = User::where('email',$inputs['email'])->first();
@@ -188,13 +205,17 @@ class UserController extends Controller {
             $message = '创建用户失败！未知错误！';
             goto end;
         }
-        $office = $this->user->hospitalAdmin->hospital->offices()->find($inputs['officeId']);
+        $office = $this->user->hospitalAdmin->hospital->offices()->find($inputs['id']);
         $doctorInfo = array('level' => $inputs['level'],
             'price' => $inputs['price'],
+            'level' => $inputs['level'],
             'am_appoints_number'=> $office->default_am_appoints_number,
-            'pm_appoints_number'=> $office->default_pm_appoints_number
+            'pm_appoints_number'=> $office->default_pm_appoints_number,
+            'user_id' => $user->id,
+            'office_id' => $office->id
         );
         $doctor = Doctor::create($doctorInfo);
+        $doctor->user = $doctor->user()->first();
         $message = '医生创建成功！';
         end:
         if(!isset($doctor) || is_null($doctor))
@@ -208,6 +229,33 @@ class UserController extends Controller {
             $this->ajaxData['message'] = $message;
             $this->ajaxData['doctor'] = $doctor->toArray();
         }
+        return json_encode($this->ajaxData);
+    }
+
+    public function ajaxEditDoctor()
+    {
+        $inputs = Request::all();
+        $doctor = Doctor::find($inputs['id']);
+        if(is_null($doctor))
+        {
+            $message = '修改医生信息失败！不存在的医生！';
+            $this->ajaxData['status'] = 'error';
+            goto end;
+        }
+        $doctor->level = $inputs['level'];
+        $doctor->price = $inputs['price'];
+        $doctor->save();
+        $user = $doctor->user()->first();
+        $user->name = $inputs['name'];
+        $user->save();
+        $doctor->user = $user;
+
+        $message = '修改医生信息成功！';
+        $this->ajaxData['status'] = 'success';
+
+        end:
+        $this->ajaxData['message'] = $message;
+        $this->ajaxData['doctor'] = $doctor->toArray();
         return json_encode($this->ajaxData);
     }
 }

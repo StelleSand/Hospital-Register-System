@@ -15,11 +15,22 @@ Route::get('/','HospitalController@getAllHospital');
 Route::get('/home','HospitalController@getAllHospital');
 
 
+<<<<<<< HEAD
+=======
+Route::get('/hospital','HospitalController@getAllOffices');
+
+Route::get('/doc_information',function(){
+    return view('hospital/doctor_information');
+});
+
+>>>>>>> origin/master
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
+Route::get('logout', 'Auth\AuthController@getLogout');
+
 
 Route::get('workSpace', ['middleware' => 'auth', 'uses' =>'UserController@getWorkSpace']);
 Route::get('person', ['middleware' => 'auth', 'uses' =>'UserController@getPerson']);

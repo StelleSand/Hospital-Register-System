@@ -38,7 +38,7 @@
                     var succ_message=$('<div></div>').addClass('alert').addClass('alert-success').addClass('text-center');
                     succ_message.html(result['message']);
                     showMessage(succ_message);
-                    show_doctor(result['doctor']['id'],result['doctor']['name'],result['doctor']['email'],result['doctor']['level'],result['doctor']['price']);
+                    show_doctor(result['doctor']['id'],result['doctor']['user']['name'],result['doctor']['user']['email'],result['doctor']['level'],result['doctor']['price']);
                 }
             }
         }
@@ -59,15 +59,13 @@
             $('#doctor_list').append(doc_main_body);
         }
         function edit_doc(btn){
-            $("#addFormModal").find(".modal-title").html("添加医生");
+            $("#addFormModal").find(".modal-title").html("编辑医生");
             var doc_name=$(btn).parents('.one_doctor').find('.doc_name').children('span').text();
-            var doc_email=$(btn).parents('.one_doctor').find('.doc_email').children('span').text();
             var doc_level=$(btn).parents('.one_doctor').find('.doc_level').children('span').text();
             var doc_price=$(btn).parents('.one_doctor').find('.doc_price').children('span').text();
             var doc_id=$(btn).parents('.one_doctor').find('.doc_name').attr('data-id');
             var add_doc_form=$('<form></form>').addClass("doc_form").attr("id","add_doctor").attr('data-id',doc_id);
             add_doc_form.append(getFormGroupWithValue('医生姓名','name','text',doc_name));
-            add_doc_form.append(getFormGroupWithValue('医生邮箱','email','email',doc_email));
             add_doc_form.append(getFormGroupWithValue('医生级别','level','text',doc_level));
             add_doc_form.append(getFormGroupWithValue('挂号费用','price','number',doc_price));
             showForm(add_doc_form);
@@ -79,7 +77,7 @@
     @foreach($doctors as $doctor)
         <div class="col-md-4 one_doctor">
             <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="{{$doctor->id}}">医生姓名：<span>{{$doctor->name}}</span></div>
+                <div class="panel-heading doc_name" data-id="{{$doctor->id}}">医生姓名：<span>{{$doctor->user->name}}</span></div>
                 <div class="panel-body doc_email">医生邮箱：<span>{{$doctor->user->email}}</span></div>
                 <div class="panel-body doc_level">医生级别：<span>{{$doctor->level}}</span></div>
                 <div class="panel-body doc_price">挂号费用：<span>{{$doctor->price}}</span></div>
@@ -90,66 +88,6 @@
             <br/>
         </div>
     @endforeach
-        <div class="col-md-4 one_doctor">
-            <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="123">医生姓名：<span>23333</span></div>
-                <div class="panel-body doc_email">医生邮箱：<span>2333333@163.com</span></div>
-                <div class="panel-body doc_level">医生级别：<span>专家</span></div>
-                <div class="panel-body doc_price">挂号费用：<span>$1000000</span></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center"><button class="btn btn-primary" onclick="edit_doc(this)">编辑该医生</button></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-4 one_doctor">
-            <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="123">医生姓名：<span>23333</span></div>
-                <div class="panel-body doc_email">医生邮箱：<span>2333333@163.com</span></div>
-                <div class="panel-body doc_level">医生级别：<span>专家</span></div>
-                <div class="panel-body doc_price">挂号费用：<span>$1000000</span></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center"><button class="btn btn-primary" onclick="edit_doc(this)">编辑该医生</button></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-4 one_doctor">
-            <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="123">医生姓名：<span>23333</span></div>
-                <div class="panel-body doc_email">医生邮箱：<span>2333333@163.com</span></div>
-                <div class="panel-body doc_level">医生级别：<span>专家</span></div>
-                <div class="panel-body doc_price">挂号费用：<span>$1000000</span></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center"><button class="btn btn-primary" onclick="edit_doc(this)">编辑该医生</button></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-4 one_doctor">
-            <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="123">医生姓名：<span>23333</span></div>
-                <div class="panel-body doc_email">医生邮箱：<span>2333333@163.com</span></div>
-                <div class="panel-body doc_level">医生级别：<span>专家</span></div>
-                <div class="panel-body doc_price">挂号费用：<span>$1000000</span></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center"><button class="btn btn-primary" onclick="edit_doc(this)">编辑该医生</button></div>
-            </div>
-            <br/>
-        </div>
-        <div class="col-md-4 one_doctor">
-            <div class="panel panel-success">
-                <div class="panel-heading doc_name" data-id="123">医生姓名：<span>23333</span></div>
-                <div class="panel-body doc_email">医生邮箱：<span>2333333@163.com</span></div>
-                <div class="panel-body doc_level">医生级别：<span>专家</span></div>
-                <div class="panel-body doc_price">挂号费用：<span>$1000000</span></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center"><button class="btn btn-primary" onclick="edit_doc(this)">编辑该医生</button></div>
-            </div>
-            <br/>
-        </div>
     </div>
     <div class="row addDoc_btn">
         <div class="col-md-12 text-right">

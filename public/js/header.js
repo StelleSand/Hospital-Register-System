@@ -35,7 +35,7 @@ function getFormData(formElement){
     var data = {};
     //传入提交表单的id
     if($(formElement).attr('data-id')!=undefined)
-        data[id]=$(formElement).attr('data-id');
+        data['id']=$(formElement).attr('data-id');
     $(formElement).find('input').each(function() {
         var name = $(this).attr('name');
         if(name) {
