@@ -15,15 +15,11 @@ Route::get('/','HospitalController@getAllHospital');
 Route::get('/home','HospitalController@getAllHospital');
 
 
-<<<<<<< HEAD
-=======
 Route::get('/hospital','HospitalController@getAllOffices');
 
 Route::get('/doc_information',function(){
     return view('hospital/doctor_information');
 });
-
->>>>>>> origin/master
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('login', 'Auth\AuthController@postLogin');

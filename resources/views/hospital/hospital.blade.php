@@ -8,18 +8,6 @@
     <script type="text/javascript" src="./js/bootstrap-datetimepicker.zh-CN.js"></script>
     <script type="text/javascript" src="./js/make_appoint.js"></script>
     <script>
-        $(function(){
-            $('.form_date').datetimepicker({
-                language:  'zh-CN',
-                weekStart: 1,
-                todayBtn:  1,
-                autoclose: 1,
-                todayHighlight: 1,
-                startView: 2,
-                minView: 2,
-                forceParse: 0
-            });
-        })
         //点击科室展示该科室内所有医生实现函数
         /*
         function show_doctor(btn){
@@ -62,7 +50,7 @@
     </script>
 @stop
 @section("extra")
-    <div class="container-fluid">
+    <div class="container-fluid" id="office_list">
         <div class="row">
             <div class="list-group col-md-12">
                 @foreach($offices as $office)
@@ -70,7 +58,7 @@
                     <div class="collapse" id="office{{$office->id}}">
                         <br/>
                         <div class="row">
-                            @foreach($office->doctor as $doctor)
+                            @foreach($office->doctors as $doctor)
                                 <div class="col-md-3 one_doctor">
                                     <div class="panel panel-success">
                                         <div class="panel-heading doc_name" data-id="{{$doctor->id}}">
