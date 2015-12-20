@@ -12,15 +12,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model {
 
-    protected $table = 'table';
+    protected $table = 'order';
 
     protected $fillable = ['user_id','doctor_id','order_date','pay_date','state','price','refund','appoint_date'];
 
     public $timestamps = false;
-
-    public function appointmentsAtDate($dateString)
-    {
-        return $this->where('appoint_date',$dateString)->where('state','payed');
-    }
 
 }

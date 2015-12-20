@@ -63,7 +63,7 @@
                                     <div class="panel panel-success">
                                         <div class="panel-heading doc_name" data-id="{{$doctor->id}}">
                                             <div class="row">
-                                                <div class="col-md-6 text-left"><a href="doctor_information?id={{$doctor->id}}"><strong>{{$doctor->user->name}}</strong></a></div>
+                                                <div class="col-md-6 text-left"><a href="doctorInformation?id={{$doctor->id}}"><strong>{{$doctor->user->name}}</strong></a></div>
                                                 <div class="col-md-6 text-right">{{$doctor->level}}</div>
                                             </div>
                                         </div>

@@ -31,7 +31,7 @@ class Doctor extends Model {
 
     public function appointmentsAtDate($dateString)
     {
-        return $this->orders()->appointmentsAtDate($dateString);
+        return $this->orders()->where('appoint_date',$dateString)->where('state','payed');
     }
 
     public function isAppointmentsOut($dateString)

@@ -62,7 +62,7 @@ function modal_form_click(btn){
     $("#addFormModal").modal('hide');
     $("#addFormModal").one('hidden.bs.modal',function(e){
         //URL需重新写
-        ajaxCalDateFormById('make_appoint','/make_appoint',show_result);
+        ajaxCalDateFormById('make_appoint','submitOrder',show_result);
     })
 }
 function ajaxCalDateFormById(formId,postAddress,recallFunc){    //用Ajax提交带有日历的表单
@@ -83,7 +83,8 @@ function getFormDateTime(formId){    //获取表单中的标准格式日期值�
     if(isNull(date)){
         throw new Error( '请先选择好日期！',1);
     }
-    data['date']=date+' '+date_time;
+    data['date']=date;
+    data['daytime']=date_time;
     return data;
 }
 function getShowDateTime(formId){    //获取表单中向用户展示的时间值和时间段值(y年m月d日 上午),添加医生id字段
