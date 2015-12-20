@@ -38,6 +38,14 @@
             }
         }
         function show_office(id,name,description){
+            var office_list=$('.one_office');
+            for(var i=0;i<office_list.length;i++){
+                if(id==$(office_list[i]).find('.office_name').attr('data-id')){
+                    $(office_list[i]).find('.office_name').children().text(name);
+                    $(office_list[i]).find('.office_description').children().text(description);
+                    return;
+                }
+            }
             var off_name=$('<span></span>').text(name);
             var off_des=$('<span></span>').text(description);
             var off_panel_head=$('<div></div>').addClass('panel-heading').addClass('office_name').attr('data-id',id).html('科室名称：').append(off_name);

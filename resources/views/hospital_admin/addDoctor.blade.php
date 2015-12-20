@@ -43,6 +43,15 @@
             }
         }
         function show_doctor(id,name,email,level,price){
+            var doc_list=$(".one_doctor");
+            for(var i=0;i<doc_list.length;i++){
+                if(id==$(doc_list[i]).find('.doc_name').attr('data-id')){
+                    $(doc_list[i]).find('.doc_name').children().text(name);
+                    $(doc_list[i]).find('.doc_level').children().text(level);
+                    $(doc_list[i]).find('.doc_price').children().text(price);
+                    return;
+                }
+            }
             var doc_id=$('<span></span>').text(id);
             var doc_name=$('<span></span>').text(name);
             var doc_email=$('<span></span>').text(email);
