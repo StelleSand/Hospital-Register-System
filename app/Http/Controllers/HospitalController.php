@@ -37,6 +37,14 @@ class HospitalController extends Controller {
     {
         $hospital = Hospital::find(Request::input('id'));
         $offices = $hospital->offices()->get();
+        foreach($offices as &$office)
+        {
+            $office->doctors = $office->doctors()->get();
+            foreach($office->doctors as &$doctor)
+            {
+                $doctor->user = $doctor->user()->first();
+            }
+        }
         $this->data['offices'] = $offices;
         $this->data['hospital'] = $hospital;
         return view('hospital/hospital',$this->data);
