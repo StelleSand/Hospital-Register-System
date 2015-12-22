@@ -87,9 +87,9 @@ class UserController extends Controller {
             $order->appoint_date = substr($order->appoint_date,0,10);
         }
         $today = Carbon::today($this->timeZone);
+        $this->data['today'] = $today->format('Y-m-d');
         $this->data['doctor'] = $doctor;
         $this->data['orders'] = $orders;
-        $this->data['today'] = $today->format('Y-m-d');
         return view('doctor/check_appointment',$this->data);
     }
 
@@ -157,6 +157,8 @@ class UserController extends Controller {
         {
             $order->doctor = $order->doctor()->first();
         }
+        $today = Carbon::today($this->timeZone);
+        $this->data['today'] = $today->format('Y-m-d');
         $this->data['orders'] = $orders;
         return view('hospital_admin/hospital_triage',$this->data);
     }
