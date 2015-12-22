@@ -17,7 +17,11 @@
             var add_off_form=$('<form></form>').addClass("off_form").attr("id","add_office");
             add_off_form.append(getFormGroup("科室名称","name","text","请输入科室名称"));
             add_off_form.append(getFormGroup("科室描述","description","textarea","请输入科室描述信息"));
-            showForm(add_off_form);
+            $('#form-content').empty();
+            $('#form-content').append(add_off_form);
+            var button=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","modal_form_click()").text("提交");
+            $("#addFormModal").find(".modal-footer").empty().append(button);
+            $('#addFormModal').modal('show');
         }
         function modal_form_click(btn){
             $("#addFormModal").modal('hide');
@@ -92,6 +96,44 @@
             add_off_form.append(getFormGroupWithValue(null,'office_id','hidden',off_id));
             showForm(add_off_form);
         }
+        function add_triage(){
+            $("#addFormModal").find(".modal-title").html("添加分诊台账户");
+            var add_triage_form=$('<form></form>').addClass("triage_form").attr("id","add_triage");
+            add_triage_form.append(getFormGroup("用户名","name","text","请输入用户名"));
+            add_triage_form.append(getFormGroup("邮箱","email","email","请输入邮箱账号"));
+            add_triage_form.append(getFormGroup("密码","password","password","请输入密码"));
+            $('#form-content').empty();
+            $('#form-content').append(add_triage_form);
+            var button=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","triage_form_click()").text("提交");
+            $("#addFormModal").find(".modal-footer").empty().append(button);
+            $('#addFormModal').modal('show');
+        }
+        function triage_form_click(){
+            $("#addFormModal").modal('hide');
+            $("#addFormModal").one('hidden.bs.modal',function(event){    //hidden.bs.modal事件处理函数每次只执行一次
+                ajaxOneFormByID('add_triage','addTriage',triage_result);
+            })
+        }
+        function triage_result(data,status){
+            if(status!="success"){
+                var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center');
+                err_message.html("服务器请求失败");
+                showMessage(err_message);
+            }
+            else{
+                var result=JSON.parse(data);
+                if(result['status']=='error'){
+                    var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center');
+                    err_message.html(result['message']);
+                    showMessage(err_message);
+                }
+                else{
+                    var succ_message=$('<div></div>').addClass('alert').addClass('alert-success').addClass('text-center');
+                    succ_message.html(result['message']);
+                    showMessage(succ_message);
+                }
+            }
+        }
     </script>
 @stop
 @section("extra")
@@ -111,8 +153,12 @@
         @endforeach
     </div>
     <div class="row addOff_btn">
-        <div class="col-md-12 text-right">
-            <button type="button" class="btn btn-primary btn-lg" onclick="add_office()">添加一个科室</button>
+        <div class="col-md-6"></div>
+        <div class="col-md-3">
+            <button class="btn btn-primary btn-lg" onclick="add_triage()">添加分诊台账户</button>
+        </div>
+        <div class="col-md-3 text-right">
+            <button class="btn btn-primary btn-lg" onclick="add_office()">添加一个科室</button>
         </div>
     </div>
 @stop

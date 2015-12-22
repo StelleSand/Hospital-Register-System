@@ -12,7 +12,11 @@
             add_doc_form.append(getFormGroup('密码','password','password','请输入密码'));
             add_doc_form.append(getFormGroup('医生级别','level','text','专家/普通医生'));
             add_doc_form.append(getFormGroup('挂号费用','price','number','请输入挂号费用'));
-            showForm(add_doc_form);
+            $('#form-content').empty();
+            $('#form-content').append(add_doc_form);
+            var button=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","modal_form_click()").text("提交");
+            $("#addFormModal").find(".modal-footer").empty().append(button);
+            $('#addFormModal').modal('show');
         }
         function modal_form_click(){
             $("#addFormModal").modal('hide');
@@ -79,6 +83,56 @@
             add_doc_form.append(getFormGroupWithValue('挂号费用','price','number',doc_price));
             showForm(add_doc_form);
         }
+        function delete_doc(btn){
+            var doc_id=$(btn).parents('.one_doctor').find('.doc_name').attr('data-id');
+            var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center').attr("data-id",doc_id).attr("id","alert_id");
+            err_message.html("确定要删除该医生？");
+            $('#form-content').empty();
+            $('#form-content').append(err_message);
+            var button1=$("<button></button>").addClass("btn").addClass("btn-danger").attr("onclick","confirm(this)").text("确定");
+            var button2=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","cancel()").text("取消");
+            $("#addFormModal").find(".modal-footer").empty().append(button1).append(button2);
+            $('#addFormModal').modal('show');
+        }
+        function confirm(btn){
+            var id=$("#alert_id").attr("data-id");
+            var data={};
+            data['id']=id;
+            $("#addFormModal").modal('hide');
+            $("#addFormModal").one('hidden.bs.modal',function(e){
+                //URL需重新写
+                ajaxData("deleteDoc",data,carry_result);
+            })
+        }
+        //*********************************************
+        function carry_result(data,status){
+            if(status!="success"){
+                var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center');
+                err_message.html("服务器请求失败");
+                showMessage(err_message);
+            }
+            else{
+                var result=JSON.parse(data);
+                if(result['status']=='error'){
+                    var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center');
+                    err_message.html(result['message']);
+                    showMessage(err_message);
+                }
+                else{
+                    var succ_message=$('<div></div>').addClass('alert').addClass('alert-success').addClass('text-center');
+                    succ_message.html(result['message']);
+                    showMessage(succ_message);
+                    var doctor_list=$(".one_doctor");
+                    for(var i=0;i<doctor_list.length;i++){
+                        var doc_id=$(doctor_list[i]).find(".doc_name").attr("data-id");
+                        if(result["id"]==doc_id){
+                            $(doctor_list[i]).remove();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
     </script>
 @stop
 @section("extra")
@@ -92,7 +146,8 @@
                 <div class="panel-body doc_price">挂号费用：<span>{{$doctor->price}}</span></div>
             </div>
             <div class="row">
-                <div class="col-md-12 text-center"><button class="btn btn-primary" onclick="edit_doc(this)">编辑该医生</button></div>
+                <div class="col-md-6 text-center"><button class="btn btn-primary" onclick="edit_doc(this)">编辑该医生</button></div>
+                <div class="col-md-6 text-center"><button class="btn btn-danger" onclick="delete_doc(this)">删除该医生</button></div>
             </div>
             <br/>
         </div>
