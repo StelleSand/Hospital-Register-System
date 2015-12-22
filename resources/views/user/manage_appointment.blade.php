@@ -3,7 +3,7 @@
 @section("script")
     <script>
         function cancel_appointment(btn){
-            var td=$(btn).parent().children();
+            var td=$(btn).parent().parent().children();
             var id=$(td[1]).text();
             var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center').attr("data-id",id).attr("id","alert_id");
             err_message.html("确定要取消该预约？");
@@ -11,7 +11,7 @@
             $('#form-content').append(err_message);
             var button1=$("<button></button>").addClass("btn").addClass("btn-danger").attr("onclick","delete_appoint(this)");
             var button2=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","cancel()");
-            $("#addFormModal").find(".modal-footer").empty().append(button1).append("<br/>").append(button2);
+            $("#addFormModal").find(".modal-footer").empty().append(button1).append(button2);
             $('#addFormModal').modal('show');
         }
         function cancel(){
@@ -71,7 +71,7 @@
                 <td>{{$order->user->name}}</td>
                 <td><a href="hospital?id={{$order->doctor->office->hospital->id}}">{{$order->doctor->office->hospital->name}}</a></td>
                 <td>{{$order->doctor->office->name}}</td>
-                <td><a href="doctorInformation?id={{$order->doctor->id}}">{{$order->doctor->name}}</a></td>
+                <td><a href="doctorInformation?id={{$order->doctor->id}}">{{$order->doctor->user->name}}</a></td>
                 <td>{{$order->appoint_date}}</td>
                 <td><button class="btn btn-danger btn-sm" onclick="cancel_appointment(this)">取消预约</button></td>
             </tr>
