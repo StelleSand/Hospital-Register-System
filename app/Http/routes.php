@@ -18,7 +18,6 @@ Route::get('makeAppointment','HospitalController@getAllHospital');
 Route::get('hospital','HospitalController@getAllOffices');
 Route::get('doctorInformation','HospitalController@getDoctorInfo');
 Route::post('submitOrder','HospitalController@ajaxSubmitOrder');
-Route::post('triageConfirmRegister','HospitalController@ajaxSubmitOrder');
 
 //用户登录注册相关路由
 Route::get('login', 'Auth\AuthController@getLogin');
@@ -40,3 +39,7 @@ Route::post('addTriage', ['middleware' => 'auth', 'uses' =>'UserController@ajaxA
 Route::post('addOffice', ['middleware' => 'auth', 'uses' =>'UserController@ajaxAddOffice']);
 Route::get('addDoctor', ['middleware' => 'auth', 'uses' =>'UserController@getAddDoctor']);
 Route::post('addDoctor', ['middleware' => 'auth', 'uses' =>'UserController@ajaxAddDoctor']);
+
+//其他路由
+Route::post('triageConfirm','UserController@ajaxTriageConfirm');
+Route::post('doctorConfirm','UserController@ajaxDoctorConfirm');
