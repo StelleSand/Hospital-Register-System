@@ -248,6 +248,8 @@ class UserController extends Controller {
             $order->save();
             $this->ajaxData['status'] = 'success';
             $this->ajaxData['message'] = '取消订单成功！';
+            $this->ajaxData['id'] = $id;
+
         }
         return json_encode($this->ajaxData);
     }
