@@ -18,14 +18,15 @@
             minView: 2,
             forceParse: 0
         })
-        var button=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","confirm(this)").text("打印预约单");
-            var order_list=$(".order_list");
-            for(var i=0;i<order_list.length;i++){
-                if($(order_list[i]).children(".appoint_date").text()==$(order_list[i]).children(".appoint_date").attr("data-date"))
-                    if($(order_list[i]).children(".appoint_status").children().text()=="已付款可挂号")
-                        $(order_list[i].children(".add_button")).append(button);
+        var button=$("<button></button>").addClass("btn").addClass("btn-primary").addClass("btn-sm").attr("onclick","confirm(this)").text("打印预约单");
+        var order_list=$(".order_list");
+        for(var i=0;i<order_list.length;i++){
+            //if($(order_list[i]).children(".appoint_date").text()==$(order_list[i]).children(".appoint_date").attr("data-date"))
+                //if($(order_list[i]).children(".order_status").children("span").html()=="已付款可挂号")
+                    $(order_list[i]).children(".add_button").append(button);
+                    console.log($(order_list[i]).children(".add_button"));
 
-            }
+        }
         })
         function confirm(btn){
             var id=$(btn).parent().parent().children(".order_id").attr("id");
@@ -166,7 +167,7 @@
                 <td>操作</td>
             </th>
             @foreach($orders as $order)
-                <tr>
+                <tr class="order_list">
                     <td></td>
                     <td class="order_id" id="{{$order->id}}">{{$order->id}}</td>
                     <td class="user_name">{{$order->user->name}}</td>
