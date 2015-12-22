@@ -83,10 +83,10 @@ class HospitalController extends Controller {
         }
         $appointDay = Carbon::createFromFormat('Y-m-d',$inputs['date'],$this->timeZone);
         $result = $today->diffInDays($appointDay, false);
-        if($result <= 0)
+        if($result < 0)
         {
             $this->ajaxData['status'] = 'error';
-            $this->ajaxData['message'] = '预约的时间必须是明天或者更晚的时间！';
+            $this->ajaxData['message'] = '预约的时间必须是今天或者更晚的时间！';
             goto submitOrderEnd;
         }
 

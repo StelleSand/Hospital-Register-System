@@ -156,6 +156,7 @@ class UserController extends Controller {
         foreach($orders as &$order)
         {
             $order->doctor = $order->doctor()->first();
+            $order->appoint_date = substr($order->appoint_date,0,10);
         }
         $today = Carbon::today($this->timeZone);
         $this->data['today'] = $today->format('Y-m-d');
