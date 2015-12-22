@@ -4,7 +4,7 @@
     <script>
         $(document).ready(function(){
             var now=new Date();
-            var today=1900+now.getYear()+"-"+(now.getMonth()+1)+"-"+now.getDate();
+            var today=1900+now.getYear()+"-"+(now.getMonth()+1)+"-"+(now.getDate()+1);
             var now_date=today.split("-");
             var order_list=$(".order_list");
             var appoint=$(order_list[0]).children(".appoint_date");
@@ -12,7 +12,7 @@
             var button=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","confirm(this)").text("确认就诊");
             if(now_date[0]==appoint_date[0]&&now_date[1]==appoint_date[1]&&now_date[2]==appoint_date[2]){
                 for(var i=0;i<order_list.length;i++){
-                    if($(order_list[i]).children(".order_status").text()=="待就诊"){    //status需确认
+                    if($(order_list[i]).children(".order_status").text()=="已付款可挂号"){    //status需确认
                         $(order_list[i]).children(".add_button").append(button);
                     }
                 }

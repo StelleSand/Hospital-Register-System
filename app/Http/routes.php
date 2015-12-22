@@ -18,6 +18,7 @@ Route::get('makeAppointment','HospitalController@getAllHospital');
 Route::get('hospital','HospitalController@getAllOffices');
 Route::get('doctorInformation','HospitalController@getDoctorInfo');
 Route::post('submitOrder','HospitalController@ajaxSubmitOrder');
+Route::post('triageConfirmRegister','HospitalController@ajaxSubmitOrder');
 
 //用户登录注册相关路由
 Route::get('login', 'Auth\AuthController@getLogin');

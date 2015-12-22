@@ -13,6 +13,7 @@ use App\HospitalAdmin;
 use App\Order;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Mockery\Exception;
 use Request;
@@ -25,6 +26,7 @@ class UserController extends Controller {
     protected $messages = array();
     protected $office_default_am_appoints_number = 8;
     protected $office_default_pm_appoints_number = 8;
+    protected $timeZone = 'Asia/Shanghai';
 
     public function __construct()
     {
@@ -80,8 +82,14 @@ class UserController extends Controller {
             $orders = $orders->where('appoint_date',$conditions['date'].' 08:00:00')->orWhere('appoint_date',$conditions['date'].' 14:00:00');
         }
         $orders = $orders->get();
+        foreach($orders as &$order)
+        {
+            $order->appoint_date = substr($order->appoint_date,0,10);
+        }
+        $today = Carbon::today($this->timeZone);
         $this->data['doctor'] = $doctor;
         $this->data['orders'] = $orders;
+        $this->data['today'] = $today->format('Y-m-d');
         return view('doctor/check_appointment',$this->data);
     }
     public function getTriageData()
