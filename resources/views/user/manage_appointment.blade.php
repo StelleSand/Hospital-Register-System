@@ -46,8 +46,9 @@
                     showMessage(succ_message);
                     var order_id_list=$(".order_class");
                     for(var i=0;i<order_id_list.length;i++){
-                        if(result['id']==$(order_id_list[i]).text())
+                        if(result['id']==$(order_id_list[i]).text()){
                             $(order_id_list[i]).parent().remove();
+                        }
                     }
                 }
             }
