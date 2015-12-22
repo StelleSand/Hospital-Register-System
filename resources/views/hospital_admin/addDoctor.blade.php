@@ -66,9 +66,11 @@
             var doc_panel_body2=$('<div></div>').addClass('panel-body').addClass('doc_level').html("医生级别：").append(doc_level);
             var doc_panel_body3=$('<div></div>').addClass('panel-body').addClass('doc_price').html("挂号费用：").append(doc_price);
             var doc_panel=$('<div></div>').addClass('panel').addClass('panel-success').append(doc_panel_head).append(doc_panel_body1).append(doc_panel_body2).append(doc_panel_body3);
-            var doc_button=$('<button></button>').addClass('btn').addClass('btn-primary').attr('onclick','edit_doc(this)').text('编辑该医生');
-            var btn=$('<div></div>').addClass('col-md-12').addClass('text-center').append(doc_button);
-            var doc_main_body=$('<div></div>').addClass('col-md-4').addClass('one_doctor').append(doc_panel).append($('<div></div>').addClass('row').append(btn)).append('<br/>');
+            var doc_button1=$('<button></button>').addClass('btn').addClass('btn-primary').attr('onclick','edit_doc(this)').text('编辑该医生');
+            var doc_button2=$('<button></button>').addClass('btn').addClass('btn-danger').attr('onclick','delete_doc(this)').text('删除该医生');
+            var btn1=$('<div></div>').addClass('col-md-6').addClass('text-center').append(doc_button1);
+            var btn2=$('<div></div>').addClass('col-md-6').addClass('text-center').append(doc_button2);
+            var doc_main_body=$('<div></div>').addClass('col-md-4').addClass('one_doctor').append(doc_panel).append($('<div></div>').addClass('row').append(btn1).append(btn2)).append('<br/>');
             $('#doctor_list').append(doc_main_body);
         }
         function edit_doc(btn){
@@ -104,7 +106,6 @@
                 ajaxData("deleteDoc",data,carry_result);
             })
         }
-        //*********************************************
         function carry_result(data,status){
             if(status!="success"){
                 var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center');
