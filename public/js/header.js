@@ -152,6 +152,8 @@ function getFormGroup(labelText,inputName,inputType,inputPlaceholder)
             name: inputName,
             placeholder: inputPlaceholder
         }).addClass('form-control');
+        if(inputType=="email")
+            input.attr("pattern","^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$");
     }
     else
     {

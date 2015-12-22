@@ -53,6 +53,7 @@
     <div class="container-fluid" id="office_list">
         <div class="row">
             <div class="list-group col-md-12">
+                <div class="page-header"><h1>欢迎来到{{$hospital->name}}</h1></div>
                 @foreach($offices as $office)
                     <button type="button" class="list-group-item" data-id="{{$office->id}}" data-toggle="collapse" data-target="#office{{$office->id}}">科室名称：{{$office->name}}</button>
                     <div class="collapse" id="office{{$office->id}}">

@@ -153,11 +153,11 @@
         @endforeach
     </div>
     <div class="row addOff_btn">
-        <div class="col-md-6"></div>
-        <div class="col-md-3">
+        <div class="col-md-8"></div>
+        <div class="col-md-2">
             <button class="btn btn-primary btn-lg" onclick="add_triage()">添加分诊台账户</button>
         </div>
-        <div class="col-md-3 text-right">
+        <div class="col-md-2 text-right">
             <button class="btn btn-primary btn-lg" onclick="add_office()">添加一个科室</button>
         </div>
     </div>
