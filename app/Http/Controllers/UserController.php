@@ -76,6 +76,7 @@ class UserController extends Controller {
     {
         $conditions = Request::all();
         $doctor = $this->user->doctor;
+        dump($doctor);
         $orders = $doctor->orders();
         if(!empty($conditions['date']))
         {

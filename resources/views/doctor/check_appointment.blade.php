@@ -109,8 +109,8 @@
             <tr class="order_list">
                 <td></td>
                 <td class="order_id" id="{{$order->id}}">{{$order->id}}</td>
-                <td>{{$order->user->name}}</td>
-                <td class="user_name">{{$order->doctor->user->name}}</td>
+                <td class="user_name">{{$order->user->name}}</td>
+                <td >{{$order->doctor->user->name}}</td>
                 <td class="appoint_date" data-date="{{$today}}">{{$order->appoint_date}}</td>
                 <td class="order_status">
                     @if ($order->state == 'ordered')
