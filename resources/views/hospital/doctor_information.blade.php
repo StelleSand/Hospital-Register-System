@@ -14,6 +14,8 @@
             <div class="jumbotron">
                 <div><h1>医生信息</h1></div>
                 <div class="form-group" id="doc_name" data-id="{{$doctor->id}}"><h2>{{$doctor->user->name}}</h2></div>
+                <div class="form-group"><h3>所属医院：{{$doctor->office->hospital->name}}</h3></div>
+                <div class="form-group"><h3>所属科室：{{$doctor->office->name}}</h3></div>
                 <div class="form-group"><h3>级别：{{$doctor->level}}</h3></div>
                 <div class="form-group"><h3>挂号费用：{{$doctor->price}}</h3></div>
                 <div class="form-group"><h3>邮箱：{{$doctor->user->email}}</h3></div>

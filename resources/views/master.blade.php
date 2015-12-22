@@ -67,13 +67,7 @@
                                 <li><a href="/">首页 <span class="sr-only">(current)</span></a></li>
                                 <li><a href="#">挂号服务</a></li>
                                 <li><a href="#">预约管理</a> </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">缴费管理 <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">已缴费订单</a></li>
-                                        <li><a href="#">未缴费订单</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="#">历史订单</a></li>
                                 @if(isset($user))
                                 @if($user->group!="user")
                                 <li><a href="workSpace">工作空间</a></li>

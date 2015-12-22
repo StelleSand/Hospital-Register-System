@@ -39,7 +39,7 @@
                 $(chosen_li[i]).removeClass("active");
             }
             $(this).addClass("active");
-            var hos_distr_val=$(this).children("a").text();
+            var hos_distr_val=$(this).children().text();
             for(var i=0;i<hos.length;i++){
                 var hos_district_text=$(hos_district[i]).text();
                 if(hos_distr_val=="北京市")
@@ -63,12 +63,20 @@
     </div>
     <div>
         <ul class="nav nav-pills">
-            <li role="presentation" class="active"><a href="#">北京市</a></li>
-            <li role="presentation"><a href="#">朝阳区</a></li>
-            <li role="presentation"><a href="#">海淀区</a></li>
-            <li role="presentation"><a href="#">丰台区</a></li>
-            <li role="presentation"><a href="#">昌平区</a></li>
-            <li role="presentation"><a href="#">大兴区</a></li>
+            <li role="presentation" class="active"><a>北京市</a></li>
+            <li role="presentation"><a>朝阳区</a></li>
+            <li role="presentation"><a>海淀区</a></li>
+            <li role="presentation"><a>东城区</a></li>
+            <li role="presentation"><a>西城区</a></li>
+            <li role="presentation"><a>丰台区</a></li>
+            <li role="presentation"><a>通州区</a></li>
+            <li role="presentation"><a>顺义区</a></li>
+            <li role="presentation"><a>大兴区</a></li>
+            <li role="presentation"><a>昌平区</a></li>
+            <li role="presentation"><a>房山区</a></li>
+            <li role="presentation"><a>怀柔区</a></li>
+            <li role="presentation"><a>平谷区</a></li>
+            <li role="presentation"><a>其他</a></li>
         </ul>
     </div>
     <div class="hos_list">

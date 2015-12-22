@@ -2,6 +2,16 @@
 @section("title","医院管理")
 @section("script")
     <script>
+        $(document).ready(function(){
+            var office_des_list=$(".office_description");
+            $.each(office_des_list,function(i){
+                var office_description=$(office_des_list[i]).children().text();
+                if(office_description.length>40){
+                    var max_office_description=office_description.substr(0,40)+"...";
+                    $(office_des_list[i]).children().text(max_office_description);
+                }
+            })
+        })
         function add_office(){
             $("#addFormModal").find(".modal-title").html("添加科室");
             var add_off_form=$('<form></form>').addClass("off_form").attr("id","add_office");
@@ -42,14 +52,26 @@
             for(var i=0;i<office_list.length;i++){
                 if(id==$(office_list[i]).find('.office_name').attr('data-id')){
                     $(office_list[i]).find('.office_name').children().text(name);
-                    $(office_list[i]).find('.office_description').children().text(description);
+                    if(description.length>40){
+                        var max_description=description.substr(0,40)+"...";
+                        $(office_list[i]).find('.office_description').children().text(max_description);
+                    }
+                    else
+                        $(office_list[i]).find('.office_description').children().text(description);
+                    $(office_list[i]).find('.office_description').attr("data-info",description);
                     return;
                 }
             }
             var off_name=$('<span></span>').text(name);
-            var off_des=$('<span></span>').text(description);
+            var off_des;
+            if(description.length>40){
+                var max_description=description.substr(0,40)+"...";
+                off_des=$('<span></span>').text(max_description);
+            }
+            else
+                off_des=$('<span></span>').text(description);
             var off_panel_head=$('<div></div>').addClass('panel-heading').addClass('office_name').attr('data-id',id).html('科室名称：').append(off_name);
-            var off_panel_body=$('<div></div>').addClass('panel-body').addClass('office_description').attr('style','height:4em').attr('data-info',description).html("科室描述：").append(off_des);
+            var off_panel_body=$('<div></div>').addClass('panel-body').addClass('office_description').attr('style','height:5em').html("科室描述：").append(off_des);
             var off_panel=$('<div></div>').addClass('panel').addClass('panel-success').append(off_panel_head).append(off_panel_body);
             var off_button=$('<button></button>').addClass('btn').addClass('btn-primary').attr('onclick','edit_off(this)').text('编辑该科室');
             var off_a=$('<a></a>').addClass('btn').addClass('btn-primary').attr('href','addDoctor?id='+id).text("添加医生");
@@ -62,7 +84,7 @@
             $("#addFormModal").find(".modal-title").html("添加科室");
             var off_id=$(btn).parents('.one_office').find('.office_name').attr('data-id');
             var off_name=$(btn).parents('.one_office').find('.office_name').children('span').text();
-            var off_description=$(btn).parents('.one_office').find('.office_description').attr('data-info');
+            var off_description=$(btn).parents('.one_office').find('.office_description').attr("data-info");
             var off_id=$(btn).parents('.one_office').find('.office_name').attr('data-id');
             var add_off_form=$('<form></form>').addClass("off_form").attr("id","add_office").attr('data-id',off_id);
             add_off_form.append(getFormGroupWithValue("科室名称","name","text",off_name));
@@ -78,7 +100,7 @@
             <div class="col-md-4 one_office">
                 <div class="panel panel-success">
                     <div class="panel-heading office_name" data-id="{{$office->id}}">科室名称：<span>{{$office->name}}</span></div>
-                    <div class="panel-body office_description" style="height: 4em" data-info="{{$office->description}}">科室描述：<span>{{$office->description}}</span></div>
+                    <div class="panel-body office_description" style="height: 5em" data-info="{{$office->description}}">科室描述：<span>{{$office->description}}</span></div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 text-center"><button class="btn btn-primary" onclick="edit_off(this)">编辑该科室</button></div>
