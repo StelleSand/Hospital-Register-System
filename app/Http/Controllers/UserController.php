@@ -167,7 +167,7 @@ class UserController extends Controller {
     public function ajaxTriageConfirm()
     {
         $id = Request::input('id');
-        $order = $this->user->hospitalAdmin->hospital->orders()->where('id',$id);
+        $order = $this->user->hospitalAdmin()->first()->hospital->orders()->where('id',$id)->first();
         //$order = Order::find($id);
         if(!empty($order) && $order->state == 'payed')
         {
@@ -191,7 +191,7 @@ class UserController extends Controller {
     public function ajaxDoctorConfirm()
     {
         $id = Request::input('id');
-        $order = $this->user->doctor->orders()->where('id',$id);
+        $order = $this->user->doctor()->first()->orders()->where('id',$id)->first();
         if(!empty($order) && $order->state == 'triage_checked')
         {
             $order->state = 'doctor_checked';
