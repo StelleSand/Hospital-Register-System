@@ -172,6 +172,7 @@ class UserController extends Controller {
             $order->save();
             $this->ajaxData['status'] = 'success';
             $this->ajaxData['message'] = '打印预约单成功！挂号单状态已更新.';
+            $this->ajaxData['id'] = $id;
             goto triageConfirmEnd;
         }
         else
@@ -194,6 +195,7 @@ class UserController extends Controller {
             $order->save();
             $this->ajaxData['status'] = 'success';
             $this->ajaxData['message'] = '病人确诊确认！挂号单状态已更新.';
+            $this->ajaxData['id'] = $id;
             goto doctorConfirmEnd;
         }
         else
