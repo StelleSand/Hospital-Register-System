@@ -9,15 +9,15 @@
     <script>
         $(function(){
             $('.form_date').datetimepicker({
-            language:  'zh-CN',
-            weekStart: 1,
-            todayBtn:  1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0
-        })
+                language:  'zh-CN',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            })
 
         var order_list=$(".order_list");
         $.each(order_list,function(i){
@@ -73,7 +73,7 @@
                     var order_list=$(".order_list");
                     for(var i=0;i<order_list.length;i++){
                         if($(order_list[i]).children(".order_id").attr("id")==result['id']){
-                            $(order_list[i]).children("order_status").children().text("分诊台已核实");
+                            $(order_list[i]).children(".order_status").children().text("分诊台已核实");
                             $(order_list[i]).children(".add_button").empty();
                         }
                     }
@@ -174,7 +174,7 @@
                     <td class="user_name">{{$order->user->name}}</td>
                     <td>{{$order->doctor->office->name}}</td>
                     <td>{{$order->doctor->user->name}}</td>
-                    <td class="appoint_date" data-id="{{$today}}">{{$order->appoint_date}}</td>
+                    <td class="appoint_date" data-date="{{$today}}">{{$order->appoint_date}}</td>
                     <td class="order_status">
                         @if ($order->state == 'ordered')
                             <span>已预订未付款</span>

@@ -1,18 +1,33 @@
 @extends("master")
 @section("title","预约管理")
+@section("style")
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-datetimepicker.css">
+@stop
 @section("script")
+    <script type="text/javascript" src="./js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-datetimepicker.zh-CN.js"></script>
     <script>
         $(document).ready(function(){
+            $('.form_date').datetimepicker({
+                language:  'zh-CN',
+                weekStart: 1,
+                todayBtn:  1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            })
             var order_list=$(".order_list");
             for(var i=0;i<order_list.length;i++){
                 if($(order_list[i]).children(".appoint_date").text()==$(order_list[i]).children(".appoint_date").attr("data-date"))
                     if($(order_list[i]).children(".order_status").children("span").text()=="分诊台已核实"){
-                        var button=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","confirm(this)").text("确认就诊");
+                        var button=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","doctor_confirm(this)").text("确认就诊");
                         $(order_list[i].children(".add_button")).append(button);
                     }
             }
         })
-        function confirm(btn){
+        function doctor_confirm(btn){
             var id=$(btn).parent().parent().children(".order_id").attr("id");
             var user_name=$(btn).parent().parent().children(".user_name").text();
             var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center').attr("data-id",id).attr("id","alert_id");
@@ -56,7 +71,7 @@
                     var order_list=$(".order_list");
                     for(var i=0;i<order_list.length;i++){
                         if($(order_list[i]).children(".order_id").attr("id")==result['id']){
-                            $(order_list[i]).children("order_status").children().text("就诊医生已核实");
+                            $(order_list[i]).children(".order_status").children().text("就诊医生已核实");
                             $(order_list[i]).children(".add_button").empty();
                         }
                     }
@@ -70,7 +85,12 @@
     <form class="form-inline" action="workSpace" method="get">
         <div class="form-group">
             <label>选择日期</label>
-            <input type="date" class="form-control" name="date">
+            <div class="input-group date form_date" data-date data-date-format="yyyy年mm月dd日" data-link-field="input2" data-link-format="yyyy-m-d">
+                <input class="form-control" id="input1"  type="text" name="date_to_show" readonly>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+            <input type="hidden" id="input2" name="date">
         </div>
         <button class="btn btn-primary" type="submit">确认</button>
     </form>
