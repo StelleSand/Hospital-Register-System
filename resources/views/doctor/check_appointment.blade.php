@@ -3,13 +3,13 @@
 @section("script")
     <script>
         $(document).ready(function(){
-            var button=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","confirm(this)").text("确认就诊");
             var order_list=$(".order_list");
             for(var i=0;i<order_list.length;i++){
-                //if($(order_list[i]).children(".appoint_date").text()==$(order_list[i]).children(".appoint_date").attr("data-date"))
-                    if($(order_list[i]).children(".order_status").children("span").text()=="分诊台已核实")
+                if($(order_list[i]).children(".appoint_date").text()==$(order_list[i]).children(".appoint_date").attr("data-date"))
+                    if($(order_list[i]).children(".order_status").children("span").text()=="分诊台已核实"){
+                        var button=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","confirm(this)").text("确认就诊");
                         $(order_list[i].children(".add_button")).append(button);
-
+                    }
             }
         })
         function confirm(btn){
