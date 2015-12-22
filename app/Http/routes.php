@@ -39,3 +39,7 @@ Route::post('addTriage', ['middleware' => 'auth', 'uses' =>'UserController@ajaxA
 Route::post('addOffice', ['middleware' => 'auth', 'uses' =>'UserController@ajaxAddOffice']);
 Route::get('addDoctor', ['middleware' => 'auth', 'uses' =>'UserController@getAddDoctor']);
 Route::post('addDoctor', ['middleware' => 'auth', 'uses' =>'UserController@ajaxAddDoctor']);
+
+//其他路由
+Route::post('triageConfirm','UserController@ajaxTriageConfirm');
+Route::post('doctorConfirm','UserController@ajaxDoctorConfirm');

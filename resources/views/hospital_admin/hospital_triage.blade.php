@@ -126,8 +126,8 @@
                 <div class="col-md-6">
                     <label>请选择订单状态</label>
                     <select name="state" class="form-control">
-                        <option value="payed">已付款可挂号</option>
                         <option value="">无限制</option>
+                        <option value="payed">已付款可挂号</option>
                         <option value="triage_checked">分诊台已核实</option>
                         <option value="doctor_checked">就诊医生已核实</option>
                         <option value="completed">订单完成</option>

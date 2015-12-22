@@ -13,6 +13,7 @@ use App\HospitalAdmin;
 use App\Order;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Mockery\Exception;
 use Request;
@@ -25,6 +26,7 @@ class UserController extends Controller {
     protected $messages = array();
     protected $office_default_am_appoints_number = 8;
     protected $office_default_pm_appoints_number = 8;
+    protected $timeZone = 'Asia/Shanghai';
 
     public function __construct()
     {
@@ -80,10 +82,17 @@ class UserController extends Controller {
             $orders = $orders->where('appoint_date',$conditions['date'].' 08:00:00')->orWhere('appoint_date',$conditions['date'].' 14:00:00');
         }
         $orders = $orders->get();
+        foreach($orders as &$order)
+        {
+            $order->appoint_date = substr($order->appoint_date,0,10);
+        }
+        $today = Carbon::today($this->timeZone);
+        $this->data['today'] = $today->format('Y-m-d');
         $this->data['doctor'] = $doctor;
         $this->data['orders'] = $orders;
         return view('doctor/check_appointment',$this->data);
     }
+
     public function getTriageData()
     {
         $conditions = Request::all();
@@ -148,9 +157,59 @@ class UserController extends Controller {
         {
             $order->doctor = $order->doctor()->first();
         }
+        $today = Carbon::today($this->timeZone);
+        $this->data['today'] = $today->format('Y-m-d');
         $this->data['orders'] = $orders;
         return view('hospital_admin/hospital_triage',$this->data);
     }
+
+    public function ajaxTriageConfirm()
+    {
+        $id = Request::input('id');
+        $order = $this->user->hospitalAdmin->hospital->orders()->where('id',$id);
+        //$order = Order::find($id);
+        if(!empty($order) && $order->state == 'payed')
+        {
+            $order->state = 'triage_checked';
+            $order->save();
+            $this->ajaxData['status'] = 'success';
+            $this->ajaxData['message'] = '打印预约单成功！挂号单状态已更新.';
+            $this->ajaxData['id'] = $id;
+            goto triageConfirmEnd;
+        }
+        else
+        {
+            $this->ajaxData['status'] = 'error';
+            $this->ajaxData['message'] = '预约单打印失败！挂号单不存在或挂号单处于不可打印状态！';
+            goto triageConfirmEnd;
+        }
+        triageConfirmEnd:
+        return json_encode($this->ajaxData);
+    }
+
+    public function ajaxDoctorConfirm()
+    {
+        $id = Request::input('id');
+        $order = $this->user->doctor->orders()->where('id',$id);
+        if(!empty($order) && $order->state == 'triage_checked')
+        {
+            $order->state = 'doctor_checked';
+            $order->save();
+            $this->ajaxData['status'] = 'success';
+            $this->ajaxData['message'] = '病人确诊确认！挂号单状态已更新.';
+            $this->ajaxData['id'] = $id;
+            goto doctorConfirmEnd;
+        }
+        else
+        {
+            $this->ajaxData['status'] = 'error';
+            $this->ajaxData['message'] = '病人确诊失败！挂号单不存在或挂号单处于不可打印状态！';
+            goto doctorConfirmEnd;
+        }
+        doctorConfirmEnd:
+        return json_encode($this->ajaxData);
+    }
+
 
     public function ajaxEditPersonInfo()
     {
