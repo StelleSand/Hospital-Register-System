@@ -19,13 +19,14 @@
                 forceParse: 0
             })
             var order_list=$(".order_list");
-            for(var i=0;i<order_list.length;i++){
+            $.each(order_list,function(i){
                 if($(order_list[i]).children(".appoint_date").text()==$(order_list[i]).children(".appoint_date").attr("data-date"))
-                    if($(order_list[i]).children(".order_status").children("span").text()=="分诊台已核实"){
-                        var button=$("<button></button>").addClass("btn").addClass("btn-primary").attr("onclick","doctor_confirm(this)").text("确认就诊");
-                        $(order_list[i].children(".add_button")).append(button);
+                    if($(order_list[i]).children(".order_status").children("span").html()=="分诊台已核实")
+                    {
+                        var button=$("<button></button>").addClass("btn").addClass("btn-primary").addClass("btn-sm").attr("onclick","doctor_confirm(this)").text("确认就诊");
+                        $(order_list[i]).children(".add_button").append(button);
                     }
-            }
+            })
         })
         function doctor_confirm(btn){
             var id=$(btn).parent().parent().children(".order_id").attr("id");

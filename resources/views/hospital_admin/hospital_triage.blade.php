@@ -50,7 +50,7 @@
             $("#addFormModal").one('hidden.bs.modal',function(e){
                 var data = {};
                 data['id'] = id;
-                ajaxData("doctorConfirm",data,show_result);
+                ajaxData("triageConfirm",data,show_result);
             })
         }
         function show_result(data,status){
@@ -73,7 +73,7 @@
                     var order_list=$(".order_list");
                     for(var i=0;i<order_list.length;i++){
                         if($(order_list[i]).children(".order_id").attr("id")==result['id']){
-                            $(order_list[i]).children(".order_status").children().text("分诊台已核实");
+                            $(order_list[i]).children(".order_status").children("span").text("分诊台已核实");
                             $(order_list[i]).children(".add_button").empty();
                         }
                     }
