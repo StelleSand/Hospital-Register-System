@@ -32,49 +32,43 @@ function ajaxOneFormByID(formID,postAddress,recallFunc)
 }
 //获取表单所有输入数据
 function getFormData(formElement){
-    var data = {};
-    //传入提交表单的id
-    if($(formElement).attr('data-id')!=undefined)
-        data['id']=$(formElement).attr('data-id');
-    $(formElement).find('input').each(function() {
-        var name = $(this).attr('name');
-        if(name) {
-            /*if(name=='timebtn'){
-                data['time']='';
-                var str='#btn';
-                for(var i=1;i<=24;i++){
-                    var tmp=str+''+i;
-                    if($(tmp).prop("checked")){
-                        data['time']+='1';
-                    }else{
-                        data['time']+='0';
-                    }
-                }
-                data['time']+='';
-            }*/
-            var val = $(this).val();
-            if(!val)
-                val = $(this).attr('placeholder');
-            data[name] = val;
-        }
-        if(isNull(data[name])) {
-            throw new Error(name + '表单输入框为空或者输入不合法！',1);
-        }
-    });
-    $(formElement).find('textarea').each(function() {
-        var name = $(this).attr('name');
-        if(name) {
-            var val = $(this).val();
-            if(!val)
-                val = $(this).attr('placeholder');
-            data[name] = val;
-        }
-        if(isNull(data[name])) {
-            console.log(formElement);
-            throw new Error( name + '文本输入框不能为空！',1);
-        }
-    });
-    return data;
+    try {
+        var data = {};
+        //传入提交表单的id
+        if ($(formElement).attr('data-id') != undefined)
+            data['id'] = $(formElement).attr('data-id');
+        $(formElement).find('input').each(function () {
+            var name = $(this).attr('name');
+            if (name) {
+                var val = $(this).val();
+                /*if (!val)
+                    val = $(this).attr('placeholder');*/
+                data[name] = val;
+            }
+            if (isNull(data[name])) {
+                throw new Error(name + '表单输入框为空或者输入不合法！', 1);
+                //data[name] = "";
+            }
+        });
+        $(formElement).find('textarea').each(function () {
+            var name = $(this).attr('name');
+            if (name) {
+                var val = $(this).val();
+                /*if (!val)
+                    val = $(this).attr('placeholder');*/
+                data[name] = val;
+            }
+            if (isNull(data[name])) {
+                throw new Error(name + '文本输入框不能为空！', 1);
+                //data[name] = "";
+            }
+        });
+        return data;
+    }
+    catch (e)
+    {
+        catchClientError(e);
+    }
 }
 //判断各种值为空的情况
 function isNull(data)
@@ -201,4 +195,5 @@ function catchClientError(e){
     message['message'] = 'Client Error : ' + e.name + "<hr/>&nbsp;&nbsp;&nbsp;&nbsp;" + e.message;
     messages[0] = message;
     showAlertMessages(messages,'');
+    throw e;
 }

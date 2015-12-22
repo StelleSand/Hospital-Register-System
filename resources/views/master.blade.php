@@ -65,9 +65,9 @@
                         <div class="collapse navbar-collapse" id="system_nav">
                             <ul class="nav navbar-nav" id="nav_content">
                                 <li><a href="/">首页 <span class="sr-only">(current)</span></a></li>
-                                <li><a href="#">挂号服务</a></li>
-                                <li><a href="#">预约管理</a> </li>
-                                <li><a href="#">历史订单</a></li>
+                                <li><a href="makeAppointment">挂号服务</a></li>
+                                <li><a href="appointments">预约管理</a> </li>
+                                <li><a href="history">历史订单</a></li>
                                 @if(isset($user))
                                 @if($user->group!="user")
                                 <li><a href="workSpace">工作空间</a></li>

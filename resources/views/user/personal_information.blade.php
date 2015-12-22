@@ -7,7 +7,7 @@
             var name=$("#name").find(".panel-body").text();
             var phone=$("#phone").find(".panel-body").text();
             var description=$("#description").find(".panel-body").text();
-            var form=$("<form></form>").attr('id','person_info');
+            var form=$("<form></form>").attr('id','person_info').attr('data-id','edit');
             form.append(getFormGroupWithValue('姓名','name','text',name));
             form.append(getFormGroupWithValue('电话','phone','text',phone));
             form.append(getFormGroupWithValue('个人简介','description','textarea',description));
@@ -17,7 +17,7 @@
             $("#addFormModal").modal('hide');
             $("#addFormModal").one('hidden.bs.modal',function(e){
                 //URL需重新写
-                ajaxOneFormByID('edit_info','person_info',show_result);
+                ajaxOneFormByID('person_info','editInfo',show_result);
             })
         }
         function show_result(data,status){
@@ -49,11 +49,11 @@
         }
         function change_pwd(){
             $("#addFormModal").find(".modal-title").html("修改密码");
-            var form=$("<form></form>").attr("id","change_pwd");
+            var form=$("<form></form>").attr("id","person_info").attr('data-id','password');
             var alert_info=$("<span></span>").addClass("text-danger").attr("id","alert_info").attr("style","display:none").text("输入的密码不一致");
-            form.append(getFormGroup("旧密码",'old_pwd','password','请输入旧密码'))
-            form.append(getFormGroup("新密码",'pwd','password','请输入新密码'));
-            var confirm=getFormGroup("确认密码",'confirm_pwd','password','请再输入一遍密码');
+            form.append(getFormGroup("旧密码",'old_password','password','请输入旧密码'))
+            form.append(getFormGroup("新密码",'password','password','请输入新密码'));
+            var confirm=getFormGroup("确认密码",'confirm_password','password','请再输入一遍密码');
             confirm.children("input").attr("oninput","show_alert()").attr("onpropertychange","show_alert()");
             form.append(confirm.append(alert_info));
             showForm(form);
@@ -103,6 +103,7 @@
                 <div class="col-md-6 text-center"><button class="btn btn-primary btn-lg" onclick="edit_info()">编辑信息</button></div>
                 <div class="col-md-6 text-center"><button class="btn btn-warning btn-lg" onclick="change_pwd()">修改密码</button></div>
             </div>
+            <br><br><br>
         </div>
         <div class="col-md-4"></div>
     </div>

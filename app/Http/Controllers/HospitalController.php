@@ -66,6 +66,7 @@ class HospitalController extends Controller {
 
     public function ajaxSubmitOrder()
     {
+        $today = Carbon::today($this->timeZone);
         if(!isset($this->user) || is_null($this->user))
         {
             $this->ajaxData['status'] = 'error';
@@ -80,6 +81,15 @@ class HospitalController extends Controller {
             $this->ajaxData['message'] = '请求的医生不存在！请不要随意修改页面！如为正常操作，请联系网站管理员！';
             goto submitOrderEnd;
         }
+        $appointDay = Carbon::createFromFormat('Y-m-d',$inputs['date'],$this->timeZone);
+        $result = $today->diffInDays($appointDay, false);
+        if($result <= 0)
+        {
+            $this->ajaxData['status'] = 'error';
+            $this->ajaxData['message'] = '预约的时间必须是明天或者更晚的时间！';
+            goto submitOrderEnd;
+        }
+
         if($inputs['daytime'] == 'am')
             $appointDate = $inputs['date'].' 8:00:00';
         else if($inputs['daytime'] == 'pm')

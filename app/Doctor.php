@@ -29,6 +29,11 @@ class Doctor extends Model {
         return $this->belongsTo('App\User');
     }
 
+    public function office()
+    {
+        return $this->belongsTo('App\Office');
+    }
+
     public function appointmentsAtDate($dateString)
     {
         return $this->orders()->where('appoint_date',$dateString)->where('state','payed');

@@ -18,4 +18,14 @@ class Order extends Model {
 
     public $timestamps = false;
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function doctor()
+    {
+        return $this->belongsTo('App\Doctor');
+    }
+
 }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -52,6 +53,17 @@ class User extends Model implements AuthenticatableContract,
     public function orders()
     {
         return $this->hasMany('App\Order');
+    }
+
+    public function appointments()
+    {
+        $now = Carbon::now('Asia/Shanghai')->format('Y-m-d H:i:s');
+        return $this->orders()->where('state','payed')->where('appoint_date','>',$now)->orderBy('appoint_date');
+    }
+
+    public function historyOrders()
+    {
+        return $this->orders()->orderBy('pay_date','desc');
     }
 
 }

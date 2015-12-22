@@ -21,4 +21,9 @@ class Office extends Model{
     {
         return $this->hasMany('App\Doctor');
     }
+
+    public function hospital()
+    {
+        return $this->belongsTo('App\Hospital');
+    }
 }
