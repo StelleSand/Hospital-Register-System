@@ -19,6 +19,10 @@ class CreateOrderTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('doctor_id')->unsigned();
             $table->foreign('doctor_id')->references('id')->on('doctor');
+            $table->integer('office_id')->unsigned();
+            $table->foreign('office_id')->references('id')->on('office');
+            $table->integer('hospital_id')->unsigned();
+            $table->foreign('hospital_id')->references('id')->on('hospital');
             $table->dateTime('order_date');
             $table->dateTime('pay_date');
             $table->enum('state',array('ordered','order_canceled','payed','payment_canceled','triage_checked','doctor_checked','completed'))->default('ordered');

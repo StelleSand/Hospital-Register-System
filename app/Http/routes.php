@@ -19,10 +19,6 @@ Route::get('hospital','HospitalController@getAllOffices');
 Route::get('doctorInformation','HospitalController@getDoctorInfo');
 Route::post('submitOrder','HospitalController@ajaxSubmitOrder');
 
-Route::get('/triage',function(){
-    return view('hospital_admin/hospital_triage');
-});
-
 //用户登录注册相关路由
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::get('auth/login', 'Auth\AuthController@getLogin');

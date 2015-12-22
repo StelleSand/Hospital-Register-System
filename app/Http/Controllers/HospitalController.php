@@ -102,9 +102,13 @@ class HospitalController extends Controller {
             $this->ajaxData['message'] = '请求时间内医生的预约数已满，请重新选择！';
             goto submitOrderEnd;
         }
+        $office = $doctor->office()->first();
+        $hospital = $office->hospital()->first();
         $orderInfo = array(
             'user_id' => $this->user->id,
             'doctor_id' => $doctor->id,
+            'office_id' => $office->id,
+            'hospital_id' => $hospital->id,
             'order_date' => Carbon::now($this->timeZone),
             'pay_date' => Carbon::now($this->timeZone),
             'state' => 'payed',

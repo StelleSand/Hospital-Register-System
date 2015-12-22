@@ -45,7 +45,7 @@ class User extends Model implements AuthenticatableContract,
         else return $this->hasOne('App\Doctor');
     }
     public function hospitalAdmin(){
-        if($this->group != 'hospital_admin')
+        if($this->group != 'hospital_admin' && $this->group != 'hospital_triage')
             return null;
         else return $this->hasOne('App\HospitalAdmin');
     }

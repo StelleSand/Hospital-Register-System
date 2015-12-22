@@ -9,6 +9,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Order;
 
 class Office extends Model{
     protected $table = 'office';
@@ -25,5 +26,10 @@ class Office extends Model{
     public function hospital()
     {
         return $this->belongsTo('App\Hospital');
+    }
+
+    public function orders()
+    {
+       return $this->hasMany('App\Order');
     }
 }

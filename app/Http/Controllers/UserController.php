@@ -49,7 +49,7 @@ class UserController extends Controller {
             case 'site_admin':
                 return view('site_admin/site_admin', $this->data);
             case 'doctor':
-                return view('',$this->data);
+                return $this->getDoctorData();
             case 'hospital_admin':
                 $hospitalAdmin = $this->user->hospitalAdmin()->first();
                 $hospital = $hospitalAdmin->hospital()->first();
@@ -61,13 +61,95 @@ class UserController extends Controller {
                 $this->data['offices'] = $offices;
                 return view('hospital_admin/hospital_admin',$this->data);
             case 'hospital_triage':
-                return view('',$this->data);
+                return $this->getTriageData();
         }
     }
 
     public function getPerson()
     {
         return view('user/personal_information',$this->data);
+    }
+
+    public function getDoctorData()
+    {
+        $conditions = Request::all();
+        $doctor = $this->user->doctor;
+        $orders = $doctor->orders();
+        if(!empty($conditions['date']))
+        {
+            $orders = $orders->where('appoint_date',$conditions['date'].' 08:00:00')->orWhere('appoint_date',$conditions['date'].' 14:00:00');
+        }
+        $orders = $orders->get();
+        $this->data['doctor'] = $doctor;
+        $this->data['orders'] = $orders;
+        return view('doctor/check_appointment',$this->data);
+    }
+    public function getTriageData()
+    {
+        $conditions = Request::all();
+        $hospitalAdmin = $this->user->hospitalAdmin;
+        $hospital = $hospitalAdmin->hospital()->first();
+        $orders = $hospital->orders();
+        //根据条件筛选
+        if(!empty($conditions['date']))
+        {
+            $orders = $orders->where('appoint_date',$conditions['date'].' 08:00:00')->orWhere('appoint_date',$conditions['date'].' 14:00:00');
+        }
+        if(!empty($conditions['office']))
+        {
+            $office = Office::where('name',$conditions['office'])->first();
+            if(!is_null($office))
+                $orders = $orders->where('office_id',$office->id);
+            else
+                $orders = null;
+        }
+        if(!empty($conditions['doctor']))
+        {
+            $users = User::where('name',$conditions['doctor'])->where('group','doctor')->get();
+            if(!is_null($users))
+            {
+                $doctorIds = array();
+                foreach ($users as $user) {
+                    array_push($doctorIds, $user->doctor->id);
+                }
+                $orders = $orders->whereIn('doctor_id', $doctorIds);
+            }
+            else
+            {
+                $orders = null;
+            }
+        }
+        if(!empty($conditions['order_id']))
+        {
+            $orders = $orders->where('id',$conditions['order_id']);
+        }
+        if(!empty($conditions['user_name']))
+        {
+            $users = User::where('name',$conditions['user_name'])->get();
+            if(!is_null($users))
+            {
+                $userIds = array();
+                foreach ($users as $user) {
+                    array_push($userIds, $user->id);
+                }
+                $orders = $orders->whereIn('user_id', $userIds);
+            }
+            else
+            {
+                $orders = null;
+            }
+        }
+        if(!empty($conditions['state']))
+        {
+            $orders = $orders->where('state',$conditions['state']);
+        }
+        $orders = $orders->get();
+        foreach($orders as &$order)
+        {
+            $order->doctor = $order->doctor()->first();
+        }
+        $this->data['orders'] = $orders;
+        return view('hospital_admin/hospital_triage',$this->data);
     }
 
     public function ajaxEditPersonInfo()
@@ -254,7 +336,14 @@ class UserController extends Controller {
             $this->ajaxData['message'] = '创建用户失败！未知原因，请联系网站管理员！';
             goto addTriageEnd;
         }
-        else {
+        $adminInfo = array(
+            'user_id' => $user->id,
+            'hospital_id' => $this->user->hospitalAdmin->hospital_id,
+            'type' => 'triage'
+        );
+        $admin = HospitalAdmin::create($adminInfo);
+        if(!is_null($admin))
+        {
             $this->ajaxData['status'] = 'success';
             $this->ajaxData['message'] = '分诊台账号创建成功！';
             goto addTriageEnd;
@@ -339,7 +428,12 @@ class UserController extends Controller {
             $message = '创建用户失败！邮箱已被注册！';
             goto addDoctorEnd;
         }
-        $userInfo = array('name'=>$inputs['name'],'email'=>$inputs['email'],'password'=>bcrypt($inputs['password']));
+        $userInfo = array(
+            'name'=>$inputs['name'],
+            'email'=>$inputs['email'],
+            'password'=>bcrypt($inputs['password']),
+            'group' => 'doctor'
+        );
         $user = User::create($userInfo);
         if(is_null($user))
         {

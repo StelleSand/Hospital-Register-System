@@ -24,6 +24,11 @@ class Doctor extends Model {
         return $this->hasMany('App\Order');
     }
 
+    public function appointments()
+    {
+        return $this->orders()->where('state','payed');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

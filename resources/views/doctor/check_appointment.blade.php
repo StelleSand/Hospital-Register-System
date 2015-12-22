@@ -23,7 +23,7 @@
 @stop
 @section("content")
     <div class="page-header"><h1>预约管理</h1></div>
-    <form class="form-inline">
+    <form class="form-inline" action="workSpace" method="get">
         <div class="form-group">
             <label>选择日期</label>
             <input type="date" class="form-control" name="date">
@@ -45,9 +45,25 @@
                 <td></td>
                 <td id="{{$order->id}}">{{$order->id}}</td>
                 <td>{{$order->user->name}}</td>
-                <td>{{$order->doctor->name}}</td>
+                <td>{{$order->doctor->user->name}}</td>
                 <td class="appoint_date">{{$order->appoint_date}}</td>
-                <td class="order_status">{{$order->status}}</td>
+                <td class="order_status">
+                    @if ($order->state == 'ordered')
+                        已预订未付款
+                    @elseif($order->state == 'order_canceled')
+                        订单已取消
+                    @elseif($order->state == 'payed')
+                        已付款可挂号
+                    @elseif($order->state == 'payment_canceled')
+                        已退款
+                    @elseif($order->state == 'triage_checked')
+                        分诊台已核实
+                    @elseif($order->state == 'doctor_checked')
+                        就诊医生已核实
+                    @elseif($order->state == 'completed')
+                        订单完成
+                    @endif
+                </td>
                 <td class="add_button"></td>
             </tr>
         @endforeach

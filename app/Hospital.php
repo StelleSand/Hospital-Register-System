@@ -27,4 +27,9 @@ class Hospital extends Model{
     {
         return $this->hasMany('App\Office');
     }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
 }
