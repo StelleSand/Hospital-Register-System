@@ -85,7 +85,8 @@
             add_doc_form.append(getFormGroupWithValue('挂号费用','price','number',doc_price));
             showForm(add_doc_form);
         }
-        function delete_doc(btn){
+        /*function delete_doc(btn){
+            $("#addFormModal").find(".modal-title").html("添加医生");
             var doc_id=$(btn).parents('.one_doctor').find('.doc_name').attr('data-id');
             var err_message=$('<div></div>').addClass('alert').addClass('alert-warning').addClass('text-center').attr("data-id",doc_id).attr("id","alert_id");
             err_message.html("确定要删除该医生？");
@@ -133,7 +134,7 @@
                     }
                 }
             }
-        }
+        }*/
     </script>
 @stop
 @section("extra")
@@ -147,8 +148,7 @@
                 <div class="panel-body doc_price">挂号费用：<span>{{$doctor->price}}</span></div>
             </div>
             <div class="row">
-                <div class="col-md-6 text-center"><button class="btn btn-primary" onclick="edit_doc(this)">编辑该医生</button></div>
-                <div class="col-md-6 text-center"><button class="btn btn-danger" onclick="delete_doc(this)">删除该医生</button></div>
+                <div class="col-md-12 text-center"><button class="btn btn-primary" onclick="edit_doc(this)">编辑该医生</button></div>
             </div>
             <br/>
         </div>
