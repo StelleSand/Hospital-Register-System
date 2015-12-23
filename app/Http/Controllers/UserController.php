@@ -81,7 +81,7 @@ class UserController extends Controller {
         {
             $orders = $orders->where('appoint_date',$conditions['date'].' 08:00:00')->orWhere('appoint_date',$conditions['date'].' 14:00:00');
         }
-        $orders = $orders->get();
+        $orders = $orders->where('doctor_id',$doctor->id)->get();
         foreach($orders as &$order)
         {
             $order->appoint_date = substr($order->appoint_date,0,10);
