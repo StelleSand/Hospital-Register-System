@@ -57,7 +57,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function appointments()
     {
-        $now = Carbon::now('Asia/Shanghai')->format('Y-m-d H:i:s');
+        $now = Carbon::today('Asia/Shanghai')->format('Y-m-d H:i:s');
         return $this->orders()->where('state','payed')->where('appoint_date','>',$now)->orderBy('appoint_date');
     }
 
