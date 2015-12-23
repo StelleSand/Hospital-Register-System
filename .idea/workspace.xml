@@ -28,7 +28,7 @@
       <file leaf-file-name="hospital_triage.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/hospital_admin/hospital_triage.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="88.85714" vertical-offset="3115" max-vertical-offset="3876">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3115" max-vertical-offset="3876">
               <caret line="33" column="71" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="71" />
               <folding />
             </state>
@@ -48,7 +48,7 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.392857" vertical-offset="399" max-vertical-offset="969">
+            <state vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="1007">
               <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
               <folding>
                 <element signature="e#7#392#0#PHP" expanded="true" />
@@ -60,7 +60,7 @@
       <file leaf-file-name="register.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.142858" vertical-offset="0" max-vertical-offset="1026">
+            <state vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="1026">
               <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
               <folding />
             </state>
@@ -70,8 +70,8 @@
       <file leaf-file-name="addDoctor.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/hospital_admin/addDoctor.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53501946" vertical-offset="2347" max-vertical-offset="3173">
-              <caret line="138" column="5" selection-start-line="138" selection-start-column="5" selection-end-line="138" selection-end-column="5" />
+            <state vertical-scroll-proportion="2.7354085" vertical-offset="0" max-vertical-offset="3173">
+              <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -90,7 +90,7 @@
       <file leaf-file-name="check_appointment.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/doctor/check_appointment.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-74.03571" vertical-offset="36" max-vertical-offset="2679">
+            <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="2679">
               <caret line="111" column="65" selection-start-line="111" selection-start-column="65" selection-end-line="111" selection-end-column="65" />
               <folding />
             </state>
@@ -100,7 +100,7 @@
       <file leaf-file-name="login.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.5" vertical-offset="457" max-vertical-offset="1045">
+            <state vertical-scroll-proportion="0.0" vertical-offset="457" max-vertical-offset="1045">
               <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
               <folding />
             </state>
@@ -191,6 +191,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -529,7 +530,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -552,15 +552,15 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -939,7 +939,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/hospital_admin/hospital_triage.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="88.85714" vertical-offset="3115" max-vertical-offset="3876">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3115" max-vertical-offset="3876">
           <caret line="33" column="71" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="71" />
           <folding />
         </state>
@@ -955,7 +955,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/doctor/check_appointment.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-74.03571" vertical-offset="36" max-vertical-offset="2679">
+        <state vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="2679">
           <caret line="111" column="65" selection-start-line="111" selection-start-column="65" selection-end-line="111" selection-end-column="65" />
           <folding />
         </state>
@@ -971,7 +971,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.5" vertical-offset="457" max-vertical-offset="1045">
+        <state vertical-scroll-proportion="0.0" vertical-offset="457" max-vertical-offset="1045">
           <caret line="41" column="26" selection-start-line="41" selection-start-column="26" selection-end-line="41" selection-end-column="26" />
           <folding />
         </state>
@@ -979,7 +979,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.392857" vertical-offset="399" max-vertical-offset="969">
+        <state vertical-scroll-proportion="0.0" vertical-offset="494" max-vertical-offset="1007">
           <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
           <folding>
             <element signature="e#7#392#0#PHP" expanded="true" />
@@ -989,7 +989,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.142858" vertical-offset="0" max-vertical-offset="1026">
+        <state vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="1026">
           <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
           <folding />
         </state>
@@ -997,8 +997,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/hospital_admin/addDoctor.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53501946" vertical-offset="2347" max-vertical-offset="3173">
-          <caret line="138" column="5" selection-start-line="138" selection-start-column="5" selection-end-line="138" selection-end-column="5" />
+        <state vertical-scroll-proportion="2.7354085" vertical-offset="0" max-vertical-offset="3173">
+          <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
           <folding />
         </state>
       </provider>
