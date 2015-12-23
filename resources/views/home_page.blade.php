@@ -63,6 +63,16 @@
                 </div>
                 <button class="btn btn-primary" type="submit">查询</button>
             </form>
+            <br/>
+            <p class="lead">用户使用说明</p>
+            <p>1.<strong>挂号服务：</strong> 点击导航栏<strong>挂号服务</strong>按钮即可查看北京市内医院进行挂号，在医院主页点击科室会看到科室内医生，选择好时间即可进行预约。</p>
+            <p>2.<strong>预约查询：</strong> 在系统挂号成功后，点击导航栏<strong>预约管理</strong>按钮，将可以查看到已经挂号并付款成功的订单（即预约），请在挂号日期前往就诊。</p>
+            <p>3.<strong>查看历史订单：</strong>点击导航栏<strong>历史订单</strong>按钮即可查看自己所有已完成或者已取消的订单</p>
+            <p>4.<strong>个人信息管理：</strong>在登录之后，点击导航栏右上角的<strong>用户名</strong>即可进入个人信息管理页面,用户可查看并修改个人信息。</p>
+            <p><strong class="text-danger">注意：</strong><strong>邮箱</strong>是用户的唯一标识，一经绑定不可修改</p><br/>
+            <div class="row">
+                <div class="col-md-12 text-right"><a href="makeAppointment" class="btn btn-primary">去挂号吧</a></div>
+            </div>
         </div>
     </div>
 @stop
